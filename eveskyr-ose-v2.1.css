@@ -1,0 +1,2062 @@
+.sheet-eveskyr {
+  font-family: Georgia, "Times New Roman", serif;
+  width: 700px;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 10px;
+  background: #f3ead7;
+  color: #2c2118;
+  border: 2px solid #6b4b2a;
+  box-sizing: border-box;
+}
+
+.sheet-eveskyr * {
+  box-sizing: border-box;
+}
+
+.sheet-header {
+  padding: 12px 14px;
+  margin-bottom: 10px;
+  background: #34261c;
+  color: #f7ecd2;
+  border: 2px solid #8a6a3d;
+}
+
+.sheet-header h1 {
+  margin: 0;
+  font-size: 26px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.sheet-header p {
+  margin: 4px 0 0 0;
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.sheet-panel {
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #fff8e8;
+  border: 1px solid #9a784b;
+}
+
+.sheet-panel h2 {
+  margin: 0 0 8px 0;
+  padding-bottom: 4px;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #9a784b;
+  color: #3b2818;
+}
+
+.sheet-grid {
+  display: grid;
+  gap: 8px;
+}
+
+.sheet-grid-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.sheet-grid-3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.sheet-grid-4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.sheet-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.sheet-fixed-strip {
+  padding: 8px;
+}
+
+.sheet-ability-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+}
+
+.sheet-ability-card,
+.sheet-save-card {
+  padding: 6px;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+  text-align: center;
+}
+
+.sheet-ability-card label,
+.sheet-save-card label {
+  display: block;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 10px;
+  line-height: 1.1;
+}
+
+.sheet-ability-card span {
+  display: block;
+  margin-top: 5px;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.sheet-big-number {
+  height: 32px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.sheet-save-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}
+
+.sheet-money-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 8px;
+}
+
+.sheet-repeating-card {
+  padding: 10px;
+  margin-bottom: 8px;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+}
+
+.sheet-eveskyr label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sheet-eveskyr input,
+.sheet-eveskyr textarea,
+.sheet-eveskyr select {
+  width: 100%;
+  min-height: 26px;
+  margin-top: 3px;
+  padding: 4px;
+  background: #fffdf5;
+  color: #2c2118;
+  border: 1px solid #8a6a3d;
+  font-family: inherit;
+}
+
+.sheet-eveskyr input[type="number"] {
+  text-align: center;
+}
+
+.sheet-eveskyr textarea {
+  min-height: 54px;
+  resize: vertical;
+}
+
+.sheet-eveskyr fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sheet-roll-button {
+  width: 100%;
+  margin-top: 6px;
+  padding: 4px 5px;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: 1px solid #2c2118;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sheet-roll-button:hover {
+  background: #7a4d2c;
+}
+
+.sheet-tab-buttons {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 10px;
+  padding: 6px;
+  background: #34261c;
+  border: 2px solid #8a6a3d;
+}
+
+.sheet-tab-button {
+  width: 100%;
+  min-height: 30px;
+  padding: 4px 3px;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: 1px solid #2c2118;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sheet-tab-button:hover {
+  background: #7a4d2c;
+}
+
+.sheet-tab-panel {
+  display: none;
+}
+
+.sheet-tabstoggle[value="identity"] ~ .sheet-tab-buttons button[name="act_tab_identity"],
+.sheet-tabstoggle[value="skills"] ~ .sheet-tab-buttons button[name="act_tab_skills"],
+.sheet-tabstoggle[value="exploration"] ~ .sheet-tab-buttons button[name="act_tab_exploration"],
+.sheet-tabstoggle[value="combat"] ~ .sheet-tab-buttons button[name="act_tab_combat"],
+.sheet-tabstoggle[value="equipment"] ~ .sheet-tab-buttons button[name="act_tab_equipment"],
+.sheet-tabstoggle[value="magic"] ~ .sheet-tab-buttons button[name="act_tab_magic"],
+.sheet-tabstoggle[value="notes"] ~ .sheet-tab-buttons button[name="act_tab_notes"] {
+  background: #ead9b8;
+  color: #2c2118;
+}
+
+.sheet-tabstoggle[value="identity"] ~ .sheet-tab-content .sheet-tab-identity,
+.sheet-tabstoggle[value="skills"] ~ .sheet-tab-content .sheet-tab-skills,
+.sheet-tabstoggle[value="exploration"] ~ .sheet-tab-content .sheet-tab-exploration,
+.sheet-tabstoggle[value="combat"] ~ .sheet-tab-content .sheet-tab-combat,
+.sheet-tabstoggle[value="equipment"] ~ .sheet-tab-content .sheet-tab-equipment,
+.sheet-tabstoggle[value="magic"] ~ .sheet-tab-content .sheet-tab-magic,
+.sheet-tabstoggle[value="notes"] ~ .sheet-tab-content .sheet-tab-notes {
+  display: block;
+}
+
+.sheet-weapon-buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin: 8px 0;
+}
+
+.sheet-subtitle {
+  margin: 10px 0 8px 0;
+  padding-bottom: 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+  border-bottom: 1px dotted #9a784b;
+  color: #3b2818;
+}
+
+.sheet-spell-slots {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 5px;
+  margin-bottom: 12px;
+}
+
+.sheet-spell-slots label {
+  padding: 6px;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+  text-align: center;
+}
+
+.sheet-spell-slots span {
+  display: block;
+  margin-top: 4px;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.sheet-eveskyr-lore {
+  background: #f7edcf;
+  border: 2px solid #7b5630;
+}
+
+.sheet-eveskyr-lore h2 {
+  color: #4a2d18;
+}
+
+.sheet-eveskyr-lore textarea {
+  min-height: 70px;
+}
+
+.sheet-large-textarea {
+  min-height: 140px;
+}
+
+.sheet-repeating-card textarea {
+  min-height: 76px;
+}
+
+/* v1.2: compact fixed strips for 700px width */
+.sheet-fixed-strip {
+  padding: 6px;
+}
+
+.sheet-compact-abilities,
+.sheet-compact-saves {
+  overflow: hidden;
+}
+
+.sheet-ability-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.sheet-save-grid {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.sheet-ability-card,
+.sheet-save-card {
+  min-width: 0;
+  padding: 4px;
+}
+
+.sheet-ability-card label,
+.sheet-save-card label {
+  min-height: 22px;
+  font-size: 9px;
+  line-height: 1.05;
+}
+
+.sheet-ability-card span {
+  margin-top: 3px;
+  font-size: 8px;
+  line-height: 1;
+}
+
+.sheet-ability-card input,
+.sheet-save-card input {
+  min-width: 0;
+  height: 24px;
+  padding: 2px;
+  font-size: 12px;
+}
+
+.sheet-ability-card .sheet-big-number {
+  height: 28px;
+  font-size: 17px;
+}
+
+.sheet-ability-card .sheet-roll-button,
+.sheet-save-card .sheet-roll-button {
+  width: 26px;
+  height: 24px;
+  min-width: 0;
+  margin: 4px auto 0 auto;
+  padding: 0;
+  display: block;
+  line-height: 20px;
+  font-size: 14px;
+  text-align: center;
+}
+
+
+/* v1.3: value + roll button in one line for fixed strips */
+.sheet-stat-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  gap: 4px;
+  align-items: center;
+  margin-top: 3px;
+}
+
+.sheet-stat-row input {
+  margin-top: 0;
+}
+
+.sheet-ability-card .sheet-stat-row .sheet-big-number {
+  height: 28px;
+}
+
+.sheet-ability-card .sheet-stat-roll-button,
+.sheet-save-card .sheet-stat-roll-button {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  background: #5a3821;
+  color: #f7ecd2;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.sheet-ability-card .sheet-stat-roll-button:hover,
+.sheet-save-card .sheet-stat-roll-button:hover {
+  background: #7a4d2c;
+  border: none;
+  box-shadow: none;
+}
+
+.sheet-ability-card .sheet-stat-roll-button:focus,
+.sheet-save-card .sheet-stat-roll-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.sheet-ability-card .sheet-stat-roll-button::before,
+.sheet-save-card .sheet-stat-roll-button::before {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.sheet-ability-card .sheet-roll-button,
+.sheet-save-card .sheet-roll-button {
+  font-size: 13px;
+}
+
+
+/* v1.4: Identity tab rebuild */
+.sheet-identity-row {
+  grid-template-columns: 1.55fr 1.1fr 1.35fr 1.15fr 0.7fr;
+  gap: 6px;
+  align-items: end;
+}
+
+.sheet-identity .sheet-identity-row label,
+.sheet-eveskyr-top-row label,
+.sheet-clan-field,
+.sheet-corporation-field,
+.sheet-status-field {
+  min-width: 0;
+}
+
+.sheet-eveskyr-top-row {
+  grid-template-columns: 1.1fr 1.25fr 1.3fr 1.55fr;
+  gap: 6px;
+  align-items: end;
+}
+
+.sheet-clan-field > label,
+.sheet-corporation-field > label,
+.sheet-status-field > label {
+  display: block;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sheet-clan-select,
+.sheet-corporation-active,
+.sheet-corporation-disabled,
+.sheet-status-select {
+  margin-top: 3px;
+}
+
+.sheet-clan-select,
+.sheet-corporation-active,
+.sheet-corporation-disabled,
+.sheet-status-select {
+  display: none;
+}
+
+.sheet-clan-none,
+.sheet-corporation-disabled,
+.sheet-status-disabled {
+  display: block;
+}
+
+.sheet-race-toggle[value="Człowiek"] ~ .sheet-eveskyr-lore .sheet-clan-none,
+.sheet-race-toggle[value="Elf"] ~ .sheet-eveskyr-lore .sheet-clan-none,
+.sheet-race-toggle[value="Gnom"] ~ .sheet-eveskyr-lore .sheet-clan-none,
+.sheet-race-toggle[value="Krasnolud"] ~ .sheet-eveskyr-lore .sheet-clan-none,
+.sheet-race-toggle[value="Niziołek"] ~ .sheet-eveskyr-lore .sheet-clan-none {
+  display: none;
+}
+
+.sheet-race-toggle[value="Człowiek"] ~ .sheet-eveskyr-lore .sheet-clan-human,
+.sheet-race-toggle[value="Elf"] ~ .sheet-eveskyr-lore .sheet-clan-elf,
+.sheet-race-toggle[value="Gnom"] ~ .sheet-eveskyr-lore .sheet-clan-gnome,
+.sheet-race-toggle[value="Krasnolud"] ~ .sheet-eveskyr-lore .sheet-clan-dwarf,
+.sheet-race-toggle[value="Niziołek"] ~ .sheet-eveskyr-lore .sheet-clan-halfling {
+  display: block;
+}
+
+.sheet-clan-toggle[value="Stronghollow"] ~ .sheet-eveskyr-lore .sheet-corporation-disabled {
+  display: none;
+}
+
+.sheet-clan-toggle[value="Stronghollow"] ~ .sheet-eveskyr-lore .sheet-corporation-active {
+  display: block;
+}
+
+.sheet-corporation-toggle[value="Bezpieczeństwo"] ~ .sheet-eveskyr-lore .sheet-status-disabled,
+.sheet-corporation-toggle[value="Górnictwo"] ~ .sheet-eveskyr-lore .sheet-status-disabled,
+.sheet-corporation-toggle[value="Handel"] ~ .sheet-eveskyr-lore .sheet-status-disabled,
+.sheet-corporation-toggle[value="Inżynieria"] ~ .sheet-eveskyr-lore .sheet-status-disabled,
+.sheet-corporation-toggle[value="Kultura"] ~ .sheet-eveskyr-lore .sheet-status-disabled,
+.sheet-corporation-toggle[value="Rzemiosło"] ~ .sheet-eveskyr-lore .sheet-status-disabled,
+.sheet-corporation-toggle[value="Wynalazczość"] ~ .sheet-eveskyr-lore .sheet-status-disabled {
+  display: none;
+}
+
+.sheet-corporation-toggle[value="Bezpieczeństwo"] ~ .sheet-eveskyr-lore .sheet-status-security,
+.sheet-corporation-toggle[value="Górnictwo"] ~ .sheet-eveskyr-lore .sheet-status-mining,
+.sheet-corporation-toggle[value="Handel"] ~ .sheet-eveskyr-lore .sheet-status-trade,
+.sheet-corporation-toggle[value="Inżynieria"] ~ .sheet-eveskyr-lore .sheet-status-engineering,
+.sheet-corporation-toggle[value="Kultura"] ~ .sheet-eveskyr-lore .sheet-status-culture,
+.sheet-corporation-toggle[value="Rzemiosło"] ~ .sheet-eveskyr-lore .sheet-status-craft,
+.sheet-corporation-toggle[value="Wynalazczość"] ~ .sheet-eveskyr-lore .sheet-status-invention {
+  display: block;
+}
+
+.sheet-reputation-block {
+  margin: 10px 0;
+}
+
+.sheet-reputation-header,
+.sheet-reputation-row {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 6px;
+  align-items: center;
+}
+
+.sheet-reputation-header {
+  margin-bottom: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3b2818;
+}
+
+.sheet-reputation-row {
+  margin-bottom: 5px;
+}
+
+.sheet-reputation-row input {
+  margin-top: 0;
+}
+
+.sheet-eveskyr-text-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sheet-eveskyr-text-row textarea {
+  min-height: 86px;
+}
+
+/* v1.4.1: vertical alignment fix for Identity and Eveskyr top rows */
+.sheet-identity-row,
+.sheet-eveskyr-top-row {
+  align-items: end;
+}
+
+.sheet-identity-row > label,
+.sheet-eveskyr-top-row > label,
+.sheet-clan-field,
+.sheet-corporation-field,
+.sheet-status-field {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-width: 0;
+}
+
+.sheet-identity-row input,
+.sheet-identity-row select,
+.sheet-eveskyr-top-row input,
+.sheet-eveskyr-top-row select,
+.sheet-clan-field select,
+.sheet-corporation-field select,
+.sheet-status-field select {
+  height: 30px !important;
+  min-height: 30px !important;
+  margin-top: 4px;
+  padding: 3px 6px;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.sheet-identity-row select,
+.sheet-eveskyr-top-row select,
+.sheet-clan-field select,
+.sheet-corporation-field select,
+.sheet-status-field select {
+  padding-right: 20px;
+}
+
+
+/* v1.5: Skills tab rebuilt as compact table */
+.sheet-skills-panel .sheet-skills-header,
+.sheet-skills-panel .sheet-skill-row {
+  display: grid;
+  grid-template-columns: 5fr 25fr 8fr 7fr 10fr 45fr;
+  gap: 4px;
+  align-items: center;
+}
+
+.sheet-skills-panel .sheet-skills-header {
+  margin-bottom: 5px;
+  padding: 0 2px 3px 2px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3b2818;
+  border-bottom: 1px solid #9a784b;
+}
+
+.sheet-skills-panel .sheet-skill-row {
+  padding: 4px 2px;
+  margin-bottom: 4px;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+}
+
+.sheet-skills-panel .sheet-skill-row input,
+.sheet-skills-panel .sheet-skill-row select {
+  min-width: 0;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 0;
+  padding: 3px 5px;
+  font-size: 12px;
+}
+
+.sheet-skills-panel .sheet-skill-row select {
+  text-align: center;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+.sheet-skills-panel .sheet-skill-roll-button {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sheet-skills-panel .sheet-skill-roll-button:hover {
+  background: #7a4d2c;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-skills-panel .sheet-skill-roll-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-skills-panel .sheet-skill-roll-button::before {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+
+/* v1.6.1: OSE-style equipment loadout tab */
+.sheet-equipment-panel {
+  padding: 10px;
+}
+
+.sheet-equipment-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: start;
+}
+
+.sheet-equipment-block h2 {
+  margin: 0 0 6px 0;
+  padding: 0;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  text-transform: uppercase;
+  color: #2c2118;
+}
+
+.sheet-equipment-left {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.sheet-unencumbering-text {
+  width: 100%;
+  height: 128px !important;
+  min-height: 128px !important;
+  resize: vertical;
+  background: #fffdf5 !important;
+  border: 1px solid #8a6a3d !important;
+}
+
+.sheet-equipment-note {
+  margin: 6px 0 0 0;
+  font-size: 11px;
+  line-height: 1.2;
+  font-style: italic;
+  text-transform: none;
+  color: #3b2818;
+}
+
+.sheet-equipped-list,
+.sheet-packed-list {
+  display: grid;
+  gap: 0;
+  border: 1px solid #8a6a3d;
+  background: #fffdf5;
+}
+
+.sheet-equipped-list input,
+.sheet-packed-list input {
+  height: 26px !important;
+  min-height: 26px !important;
+  margin: 0 !important;
+  padding: 2px 6px !important;
+  border: none !important;
+  border-bottom: 1px solid #9ba2bd !important;
+  background: #fffdf5 !important;
+  font-size: 12px;
+}
+
+.sheet-equipped-slot:last-child input,
+.sheet-packed-slot:last-child input {
+  border-bottom: none !important;
+}
+
+.sheet-item-slot {
+  position: relative;
+  min-width: 0;
+}
+
+.sheet-item-note {
+  position: absolute;
+  right: 5px;
+  top: 4px;
+  font-size: 11px;
+  font-style: italic;
+  color: #7d8295;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+
+
+
+/* v1.6.1: equipment inline notes */
+.sheet-equipped-list input,
+.sheet-packed-list input {
+  padding-right: 122px !important;
+}
+
+.sheet-equipped-slot-01 input,
+.sheet-equipped-slot-04 input,
+.sheet-equipped-slot-06 input,
+.sheet-equipped-slot-08 input,
+.sheet-packed-slot-08 input,
+.sheet-packed-slot-14 input,
+.sheet-packed-slot-16 input,
+.sheet-packed-slot-18 input {
+  padding-right: 150px !important;
+}
+
+
+/* v1.7.3 - Magic tab: three-line spell rows and overdrawn slots */
+.sheet-spell-slots-v17 {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.sheet-spell-slots-v17 label {
+  min-width: 0;
+}
+
+.sheet-spell-slots-v17 input[readonly] {
+  background: #eee3c9;
+  font-weight: bold;
+}
+
+.sheet-slot-overdrawn[value="1"] + input.sheet-spell-available {
+  color: #9b1c12;
+  font-weight: bold;
+  border-color: #9b1c12;
+  background: #fff0e8;
+}
+
+.sheet-spell-list-header,
+.sheet-spell-row-top {
+  display: grid;
+  grid-template-columns: 5% 45% 10% 20% 20%;
+  gap: 4px;
+  align-items: center;
+}
+
+.sheet-spell-list-header {
+  padding: 4px 6px;
+  margin-bottom: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3b2818;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+}
+
+.sheet-spell-row-card {
+  padding: 6px;
+  margin-bottom: 6px;
+  background: #fff8e8;
+  border: 1px solid #9a784b;
+}
+
+.sheet-spell-row-top input,
+.sheet-spell-row-description input,
+.sheet-spell-row-effect input[type="text"] {
+  height: 28px;
+  margin-top: 0;
+}
+
+.sheet-book-button {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  color: #3b2818;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.sheet-book-button::before {
+  content: none !important;
+  display: none !important;
+}
+
+.sheet-book-button:hover {
+  background: #ead9b8;
+}
+
+.sheet-spell-cast-button {
+  width: 100%;
+  height: 28px;
+  margin: 0;
+}
+
+.sheet-spell-row-description {
+  margin-top: 4px;
+}
+
+.sheet-spell-row-effect {
+  display: grid;
+  grid-template-columns: 5% 35% 25% 35%;
+  gap: 4px;
+  align-items: start;
+  margin-top: 4px;
+}
+
+.sheet-spell-field-with-help {
+  display: block;
+  min-width: 0;
+}
+
+.sheet-spell-field-with-help span {
+  display: block;
+  margin-top: 2px;
+  font-size: 9px;
+  font-style: italic;
+  font-weight: normal;
+  text-transform: none;
+  color: #6f573b;
+  line-height: 1.15;
+}
+
+.sheet-spell-meditated-box {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  min-height: 28px;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sheet-spell-meditated-box input[type="checkbox"] {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* v1.7.4 - Magic tab fluid spell rows, no percentage overflow */
+.sheet-spell-list-header,
+.sheet-spell-row-top {
+  grid-template-columns: 28px minmax(150px, 1fr) 58px minmax(72px, 0.6fr) minmax(92px, 0.8fr);
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+}
+
+.sheet-spell-list-header > *,
+.sheet-spell-row-top > *,
+.sheet-spell-row-effect > *,
+.sheet-spell-field-with-help,
+.sheet-spell-meditated-box {
+  min-width: 0;
+}
+
+.sheet-spell-row-card {
+  overflow: hidden;
+}
+
+.sheet-spell-row-top input,
+.sheet-spell-row-description input,
+.sheet-spell-row-effect input[type="text"] {
+  min-width: 0;
+  width: 100%;
+}
+
+.sheet-spell-row-effect {
+  grid-template-columns: 28px minmax(145px, 1fr) minmax(115px, 0.8fr) minmax(142px, max-content);
+  gap: 4px;
+  width: 100%;
+  min-width: 0;
+  align-items: start;
+}
+
+.sheet-spell-meditated-box {
+  justify-content: flex-end;
+  gap: 3px;
+  font-size: 9px;
+  letter-spacing: 0;
+  white-space: nowrap;
+}
+
+.sheet-spell-meditated-box input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 13px;
+}
+
+.sheet-book-button,
+.sheet-spell-cast-button {
+  min-width: 0;
+  width: 28px;
+  max-width: 28px;
+}
+
+.sheet-spell-field-with-help span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+
+/* v1.7.5 - Sleep reset button and skill-style spell cast roll button */
+.sheet-spell-limits-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 10px 0 8px 0;
+  padding-bottom: 3px;
+  border-bottom: 1px dotted #9a784b;
+}
+
+.sheet-spell-limits-title-row .sheet-subtitle {
+  margin: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.sheet-sleep-button {
+  width: auto;
+  min-width: 54px;
+  height: 24px;
+  margin: 0;
+  padding: 2px 10px;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: 1px solid #2c2118;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.sheet-sleep-button:hover {
+  background: #7a4d2c;
+}
+
+.sheet-magic-panel .sheet-spell-cast-button {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sheet-magic-panel .sheet-spell-cast-button:hover {
+  background: #7a4d2c;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-magic-panel .sheet-spell-cast-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-magic-panel .sheet-spell-cast-button::before {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+
+/* v1.10: combat top panels */
+.sheet-combat-top-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 10px;
+  align-items: stretch;
+}
+
+.sheet-life-row,
+.sheet-combat-stat-row {
+  display: grid;
+  gap: 6px;
+  align-items: center;
+}
+
+.sheet-life-row-top,
+.sheet-life-row-bottom,
+.sheet-combat-stat-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sheet-life-row-top {
+  margin-bottom: 6px;
+}
+
+.sheet-life-row label,
+.sheet-combat-stat-row label {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 5px;
+  align-items: center;
+  min-width: 0;
+}
+
+.sheet-life-row label span,
+.sheet-combat-stat-row label span {
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sheet-life-row input,
+.sheet-combat-stat-row input {
+  min-width: 0;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 0;
+  padding: 3px 5px;
+  text-align: center;
+}
+
+.sheet-combat-stat-row input[readonly] {
+  background: #eee4ca;
+  color: #2c2118;
+  cursor: default;
+}
+
+/* v1.8 Armor and Protection table */
+.sheet-armor-panel fieldset {
+  margin-top: 0;
+}
+
+.sheet-armor-header-row,
+.sheet-armor-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.6fr) 58px 82px 58px minmax(180px, 2fr);
+  gap: 6px;
+  align-items: center;
+  min-width: 0;
+}
+
+.sheet-armor-header-row {
+  padding: 4px 6px;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+  border-bottom: none;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.sheet-armor-row {
+  padding: 6px;
+  margin-bottom: 6px;
+  background: #fff8e8;
+  border: 1px solid #8a6a3d;
+}
+
+.sheet-armor-row input,
+.sheet-armor-row select {
+  min-width: 0;
+  margin-top: 0;
+}
+
+.sheet-armor-row input[readonly] {
+  background: #eee4ca;
+  color: #2c2118;
+  cursor: default;
+}
+
+.sheet-armor-worn-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 30px;
+}
+
+.sheet-armor-worn-cell input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  margin: 0;
+  padding: 0;
+}
+
+
+/* v1.9: combat tab weapon table */
+.sheet-weapons-panel .sheet-weapon-header,
+.sheet-weapons-panel .sheet-weapon-row-main {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 2.4fr) minmax(0, 1.1fr) minmax(0, 1.1fr) 58px 58px;
+  gap: 4px;
+  align-items: center;
+}
+
+.sheet-weapons-panel .sheet-weapon-header {
+  margin-bottom: 5px;
+  padding: 0 2px 3px 2px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #3b2818;
+  border-bottom: 1px solid #9a784b;
+}
+
+.sheet-weapons-panel .sheet-weapon-card {
+  padding: 4px 2px;
+  margin-bottom: 4px;
+  background: #ead9b8;
+  border: 1px solid #8a6a3d;
+}
+
+.sheet-weapons-panel .sheet-weapon-row-main input,
+.sheet-weapons-panel .sheet-weapon-row-main select,
+.sheet-weapons-panel .sheet-weapon-row-extra input {
+  min-width: 0;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 0;
+  padding: 3px 5px;
+  font-size: 12px;
+}
+
+.sheet-weapons-panel .sheet-weapon-row-main input[type="number"] {
+  text-align: center;
+}
+
+.sheet-weapons-panel .sheet-weapon-row-extra {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr);
+  gap: 4px;
+  align-items: center;
+  margin-top: 4px;
+}
+
+.sheet-weapons-panel .sheet-weapon-show-button,
+.sheet-weapons-panel .sheet-weapon-attack-button {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sheet-weapons-panel .sheet-weapon-show-button:hover,
+.sheet-weapons-panel .sheet-weapon-attack-button:hover {
+  background: #7a4d2c;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-weapons-panel .sheet-weapon-show-button:focus,
+.sheet-weapons-panel .sheet-weapon-attack-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-weapons-panel .sheet-weapon-show-button::before {
+  content: "⚔" !important;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 15px;
+}
+
+.sheet-weapons-panel .sheet-weapon-attack-button::before {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+
+/* v1.10: spell book button styled like the weapon show button */
+.sheet-magic-panel .sheet-book-button {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  max-width: 24px;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sheet-magic-panel .sheet-book-button:hover {
+  background: #7a4d2c;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-magic-panel .sheet-book-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-magic-panel .sheet-book-button::before {
+  content: "✦" !important;
+  display: block !important;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 15px;
+}
+
+
+/* v1.10.1: equal combat top panels and corrected armor bonus display */
+.sheet-combat-top-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+}
+
+.sheet-armor-header-row div:nth-child(2),
+.sheet-armor-row input[name="attr_armorValue"] {
+  text-align: center;
+}
+
+.sheet-magic-panel .sheet-book-button::before {
+  content: "✦" !important;
+  display: block !important;
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+  font-size: 16px;
+}
+
+
+/* v1.10.2: tighter Life/Combat top panel controls */
+.sheet-combat-top-grid {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.sheet-life-row,
+.sheet-combat-stat-row {
+  display: grid;
+  gap: 6px;
+  align-items: center;
+}
+
+.sheet-life-row-top {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sheet-life-row-bottom {
+  grid-template-columns: 0.72fr 1.22fr 1.06fr;
+}
+
+.sheet-combat-stat-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.sheet-life-row label,
+.sheet-combat-stat-row label {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+}
+
+.sheet-life-row label span,
+.sheet-combat-stat-row label span {
+  flex: 0 1 auto;
+  min-width: 0;
+  white-space: nowrap;
+  font-size: 10px;
+  line-height: 1;
+}
+
+.sheet-life-row input,
+.sheet-combat-stat-row input {
+  flex: 0 0 44px;
+  width: 44px !important;
+  min-width: 0 !important;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 0;
+  padding: 3px 4px;
+  text-align: center;
+}
+
+.sheet-life-row-bottom label:nth-child(1) input,
+.sheet-life-row-bottom label:nth-child(2) input {
+  flex-basis: 60px;
+  width: 60px !important;
+}
+
+.sheet-life-row-bottom label:nth-child(3) input {
+  flex-basis: 46px;
+  width: 46px !important;
+}
+
+.sheet-combat-stat-row label:nth-child(3) input {
+  flex-basis: 58px;
+  width: 58px !important;
+}
+
+/* v1.10.2: Roll20 repeating section controls */
+.sheet-eveskyr .repcontrol {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+  padding-top: 4px;
+}
+
+.sheet-eveskyr .repcontrol button,
+.sheet-eveskyr .repcontrol .btn {
+  width: auto !important;
+  min-width: 82px;
+  height: 28px;
+  margin: 0 !important;
+  padding: 4px 10px !important;
+  background: #5a3821 !important;
+  color: #f7ecd2 !important;
+  border: 1px solid #2c2118 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  font-family: Georgia, "Times New Roman", serif !important;
+  font-weight: bold !important;
+  text-transform: uppercase !important;
+  cursor: pointer;
+}
+
+.sheet-eveskyr .repcontrol button:hover,
+.sheet-eveskyr .repcontrol .btn:hover {
+  background: #7a4d2c !important;
+}
+
+.sheet-eveskyr .repcontrol .repcontrol_add,
+.sheet-eveskyr .repcontrol .repcontrol_edit {
+  font-size: 0 !important;
+  line-height: 0 !important;
+}
+
+.sheet-eveskyr .repcontrol .repcontrol_add::after {
+  content: "+Dodaj";
+  font-size: 11px;
+  line-height: 1;
+}
+
+.sheet-eveskyr .repcontrol .repcontrol_edit::after {
+  content: "Modyfikuj";
+  font-size: 11px;
+  line-height: 1;
+}
+
+/* v1.11: exploration movement rates */
+.sheet-movement-panel {
+  width: 100%;
+}
+
+.sheet-movement-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.sheet-movement-row label {
+  display: flex !important;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.sheet-movement-row input {
+  width: 100% !important;
+  height: 30px !important;
+  text-align: center;
+  font-weight: bold;
+  background: #eee3c9;
+}
+
+/* v1.10.3: Life/Combat top panels - labels above inputs */
+.sheet-life-row,
+.sheet-combat-stat-row {
+  display: grid;
+  gap: 8px;
+  align-items: start;
+}
+
+.sheet-life-row-top,
+.sheet-life-row-bottom,
+.sheet-combat-stat-row {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+}
+
+.sheet-life-row label,
+.sheet-combat-stat-row label {
+  display: flex !important;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 4px;
+  min-width: 0;
+  width: 100%;
+}
+
+.sheet-life-row label span,
+.sheet-combat-stat-row label span {
+  display: block;
+  width: 100%;
+  min-height: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 10px;
+  line-height: 1.1;
+  text-align: left;
+}
+
+.sheet-life-row input,
+.sheet-combat-stat-row input,
+.sheet-life-row-bottom label:nth-child(1) input,
+.sheet-life-row-bottom label:nth-child(2) input,
+.sheet-life-row-bottom label:nth-child(3) input,
+.sheet-combat-stat-row label:nth-child(3) input {
+  flex: none;
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  height: 28px;
+  min-height: 28px;
+  margin-top: 0;
+  padding: 3px 4px;
+  text-align: center;
+}
+
+.sheet-life-panel,
+.sheet-combat-stats-panel {
+  min-width: 0;
+}
+
+
+/* v1.12: exploration checks as three-column micro sections */
+.sheet-exploration-tests-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.sheet-exploration-check {
+  margin-bottom: 0;
+  padding: 8px;
+}
+
+.sheet-exploration-check > label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 10px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.sheet-exploration-check-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 24px;
+  gap: 6px;
+  align-items: center;
+}
+
+.sheet-exploration-check-row input {
+  height: 28px;
+  margin-top: 0;
+  text-align: center;
+}
+
+.sheet-exploration-no-roll {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* v1.12: make fixed-strip dice buttons match skill dice buttons */
+.sheet-ability-card .sheet-stat-roll-button,
+.sheet-save-card .sheet-stat-roll-button,
+.sheet-exploration-roll-button {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0 auto;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #5a3821;
+  color: #f7ecd2;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 1;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.sheet-ability-card .sheet-stat-roll-button:hover,
+.sheet-save-card .sheet-stat-roll-button:hover,
+.sheet-exploration-roll-button:hover {
+  background: #7a4d2c;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-ability-card .sheet-stat-roll-button:focus,
+.sheet-save-card .sheet-stat-roll-button:focus,
+.sheet-exploration-roll-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-ability-card .sheet-stat-roll-button::before,
+.sheet-save-card .sheet-stat-roll-button::before,
+.sheet-exploration-roll-button::before {
+  margin: 0;
+  padding: 0;
+  line-height: 1;
+}
+
+.sheet-initiative-button {
+  width: 100%;
+  margin: 0 0 8px 0;
+  height: 28px;
+  letter-spacing: 0.5px;
+}
+
+
+/* v1.12.1: stat and save dice buttons matched to skill dice buttons */
+.sheet-skill-roll-button,
+.sheet-ability-card .sheet-stat-roll-button,
+.sheet-save-card .sheet-stat-roll-button {
+  width: 24px !important;
+  height: 24px !important;
+  min-width: 24px !important;
+  min-height: 24px !important;
+  margin: 0 auto !important;
+  padding: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background: #5a3821 !important;
+  color: #f7ecd2 !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  line-height: 1 !important;
+  appearance: none !important;
+  -webkit-appearance: none !important;
+  cursor: pointer;
+}
+
+.sheet-skill-roll-button:hover,
+.sheet-ability-card .sheet-stat-roll-button:hover,
+.sheet-save-card .sheet-stat-roll-button:hover {
+  background: #7a4d2c !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-skill-roll-button:focus,
+.sheet-ability-card .sheet-stat-roll-button:focus,
+.sheet-save-card .sheet-stat-roll-button:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.sheet-skill-roll-button::before,
+.sheet-ability-card .sheet-stat-roll-button::before,
+.sheet-save-card .sheet-stat-roll-button::before {
+  margin: 0 !important;
+  padding: 0 !important;
+  line-height: 1 !important;
+}
+
+.sheet-ability-card input[readonly] {
+  background: #ead9b8;
+  font-weight: bold;
+}
+
+.sheet-initiative-row {
+  display: block;
+  margin: 0 0 12px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px dotted #9a784b;
+}
+
+.sheet-initiative-row .sheet-initiative-button {
+  width: 100%;
+  margin: 0;
+  height: 30px;
+}
+
+
+/* ========================================================================== */
+/* v2.1: Królewski rejestr Eveskyr                                  */
+/* Style-only pass: royal blue, gold, brass/copper accents, stone buttons.     */
+/* No HTML structure or sheet-worker behavior changed.                         */
+/* ========================================================================== */
+
+.sheet-eveskyr {
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(255, 215, 0, 0.22) 0, rgba(255, 215, 0, 0) 29%),
+    linear-gradient(145deg, #4169e1 0%, #2f52bd 42%, #243b8f 100%);
+  color: #241f1a;
+  border: 3px double #ffd700;
+  box-shadow:
+    inset 0 0 0 2px rgba(176, 141, 87, 0.75),
+    inset 0 0 24px rgba(20, 26, 73, 0.55),
+    0 0 0 1px #6a4a2d;
+}
+
+.sheet-eveskyr * {
+  text-shadow: none;
+}
+
+.sheet-header {
+  position: relative;
+  overflow: hidden;
+  padding: 14px 16px;
+  background:
+    linear-gradient(120deg, rgba(255, 215, 0, 0.18), rgba(255, 215, 0, 0) 35%),
+    linear-gradient(180deg, #2f52bd 0%, #203580 100%);
+  color: #fff7d0;
+  border: 2px solid #ffd700;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.18),
+    inset 0 -8px 18px rgba(16, 24, 70, 0.55),
+    0 2px 0 rgba(62, 40, 20, 0.65);
+}
+
+.sheet-header::before,
+.sheet-header::after {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ffd700;
+  font-size: 18px;
+  line-height: 1;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.5);
+}
+
+.sheet-header::before {
+  left: 9px;
+}
+
+.sheet-header::after {
+  right: 9px;
+}
+
+.sheet-header h1,
+.sheet-panel h2,
+.sheet-subtitle,
+.sheet-equipment-block h2 {
+  font-family: Georgia, "Palatino Linotype", "Times New Roman", serif;
+}
+
+.sheet-header h1 {
+  color: #ffd700;
+  font-size: 27px;
+  letter-spacing: 1.6px;
+  text-align: center;
+  text-shadow:
+    0 1px 0 #6a4a2d,
+    0 0 8px rgba(255, 215, 0, 0.28);
+}
+
+.sheet-header p {
+  color: #fff4c4;
+  text-align: center;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0.4px;
+}
+
+.sheet-panel,
+.sheet-spell-row-card {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.62), rgba(255, 255, 255, 0) 42%),
+    #f7f1e1;
+  border: 2px solid #b08d57;
+  box-shadow:
+    inset 0 0 0 1px #fff8dc,
+    0 2px 0 rgba(62, 40, 20, 0.3);
+}
+
+.sheet-panel h2 {
+  color: #203580;
+  border-bottom: 2px solid #ffd700;
+  letter-spacing: 0.8px;
+  text-shadow: 0 1px 0 #fff8dc;
+}
+
+.sheet-panel h2::before {
+  content: "◆ ";
+  color: #b86a3c;
+  font-size: 12px;
+}
+
+.sheet-subtitle,
+.sheet-spell-limits-title-row {
+  color: #203580;
+  border-bottom-color: #b08d57;
+}
+
+.sheet-eveskyr-lore {
+  background:
+    linear-gradient(135deg, rgba(255, 215, 0, 0.13), rgba(255, 215, 0, 0) 35%),
+    #f8efd5;
+  border: 2px solid #ffd700;
+  box-shadow:
+    inset 0 0 0 1px #b08d57,
+    0 2px 0 rgba(62, 40, 20, 0.28);
+}
+
+.sheet-eveskyr-lore h2 {
+  color: #243b8f;
+}
+
+.sheet-ability-card,
+.sheet-save-card,
+.sheet-repeating-card,
+.sheet-spell-slots label,
+.sheet-skills-panel .sheet-skill-row,
+.sheet-weapons-panel .sheet-weapon-card,
+.sheet-spell-list-header,
+.sheet-armor-header-row {
+  background:
+    linear-gradient(180deg, #fff8dc 0%, #ead7a6 100%);
+  border: 1px solid #b08d57;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.55);
+}
+
+.sheet-armor-row {
+  background: #f9f0d8;
+  border: 1px solid #b08d57;
+}
+
+.sheet-fixed-strip {
+  background:
+    linear-gradient(180deg, #f8efd5 0%, #e3cf9b 100%);
+  border-color: #ffd700;
+}
+
+.sheet-ability-card label,
+.sheet-save-card label,
+.sheet-eveskyr label,
+.sheet-life-row label span,
+.sheet-combat-stat-row label span,
+.sheet-exploration-check > label,
+.sheet-skills-panel .sheet-skills-header,
+.sheet-weapons-panel .sheet-weapon-header,
+.sheet-armor-header-row,
+.sheet-spell-list-header {
+  color: #203580;
+  letter-spacing: 0.35px;
+}
+
+.sheet-eveskyr input,
+.sheet-eveskyr textarea,
+.sheet-eveskyr select {
+  background: #fffdf5;
+  color: #241f1a;
+  border: 1px solid #b08d57;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  box-shadow:
+    inset 0 1px 2px rgba(36, 31, 26, 0.12),
+    0 1px 0 rgba(255, 248, 220, 0.8);
+}
+
+.sheet-eveskyr input:focus,
+.sheet-eveskyr textarea:focus,
+.sheet-eveskyr select:focus {
+  outline: none;
+  border-color: #4169e1;
+  box-shadow:
+    0 0 0 1px #ffd700,
+    0 0 5px rgba(65, 105, 225, 0.55),
+    inset 0 1px 2px rgba(36, 31, 26, 0.12);
+}
+
+.sheet-eveskyr input[readonly],
+.sheet-combat-stat-row input[readonly],
+.sheet-armor-row input[readonly],
+.sheet-spell-slots-v17 input[readonly],
+.sheet-movement-row input,
+.sheet-ability-card input[readonly] {
+  background: #ece0bd !important;
+  color: #203580;
+  font-weight: bold;
+}
+
+.sheet-tab-buttons {
+  background:
+    linear-gradient(180deg, #253982 0%, #17265f 100%);
+  border: 2px solid #ffd700;
+  box-shadow:
+    inset 0 0 0 1px #b08d57,
+    0 2px 0 rgba(62, 40, 20, 0.45);
+}
+
+.sheet-tab-button {
+  background:
+    linear-gradient(145deg, #b8b3aa 0%, #8e887e 46%, #5e5952 100%);
+  color: #fff8dc;
+  border: 1px solid #ffd700;
+  font-family: "Trebuchet MS", "Segoe UI", Arial, sans-serif;
+  text-shadow: 0 1px 0 #241f1a;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(36, 31, 26, 0.45);
+}
+
+.sheet-tab-button:hover {
+  background:
+    linear-gradient(145deg, #cbc5ba 0%, #9d968b 46%, #655f57 100%);
+  color: #ffffff;
+  border-color: #ffe15f;
+}
+
+.sheet-tabstoggle[value="identity"] ~ .sheet-tab-buttons button[name="act_tab_identity"],
+.sheet-tabstoggle[value="skills"] ~ .sheet-tab-buttons button[name="act_tab_skills"],
+.sheet-tabstoggle[value="exploration"] ~ .sheet-tab-buttons button[name="act_tab_exploration"],
+.sheet-tabstoggle[value="combat"] ~ .sheet-tab-buttons button[name="act_tab_combat"],
+.sheet-tabstoggle[value="equipment"] ~ .sheet-tab-buttons button[name="act_tab_equipment"],
+.sheet-tabstoggle[value="magic"] ~ .sheet-tab-buttons button[name="act_tab_magic"],
+.sheet-tabstoggle[value="notes"] ~ .sheet-tab-buttons button[name="act_tab_notes"] {
+  background:
+    linear-gradient(180deg, #ffd700 0%, #d9a92a 54%, #b08d57 100%);
+  color: #1e2f78;
+  border-color: #fff4a8;
+  text-shadow: 0 1px 0 rgba(255, 248, 220, 0.65);
+  box-shadow:
+    inset 0 1px 0 #fff8dc,
+    inset 0 -2px 4px rgba(106, 74, 45, 0.45);
+}
+
+.sheet-roll-button,
+.sheet-sleep-button,
+.sheet-eveskyr .repcontrol button,
+.sheet-eveskyr .repcontrol .btn,
+.sheet-skill-roll-button,
+.sheet-ability-card .sheet-stat-roll-button,
+.sheet-save-card .sheet-stat-roll-button,
+.sheet-exploration-roll-button,
+.sheet-weapons-panel .sheet-weapon-show-button,
+.sheet-weapons-panel .sheet-weapon-attack-button,
+.sheet-magic-panel .sheet-book-button,
+.sheet-magic-panel .sheet-spell-cast-button {
+  background:
+    linear-gradient(145deg, #b8b3aa 0%, #8e887e 48%, #5e5952 100%) !important;
+  color: #fff8dc !important;
+  border: 1px solid #ffd700 !important;
+  text-shadow: 0 1px 0 #241f1a !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    inset 0 -2px 4px rgba(36, 31, 26, 0.45),
+    0 1px 0 rgba(106, 74, 45, 0.7) !important;
+}
+
+.sheet-roll-button:hover,
+.sheet-sleep-button:hover,
+.sheet-eveskyr .repcontrol button:hover,
+.sheet-eveskyr .repcontrol .btn:hover,
+.sheet-skill-roll-button:hover,
+.sheet-ability-card .sheet-stat-roll-button:hover,
+.sheet-save-card .sheet-stat-roll-button:hover,
+.sheet-exploration-roll-button:hover,
+.sheet-weapons-panel .sheet-weapon-show-button:hover,
+.sheet-weapons-panel .sheet-weapon-attack-button:hover,
+.sheet-magic-panel .sheet-book-button:hover,
+.sheet-magic-panel .sheet-spell-cast-button:hover {
+  background:
+    linear-gradient(145deg, #ccc7bd 0%, #9c958a 48%, #686158 100%) !important;
+  color: #ffffff !important;
+  border-color: #ffe15f !important;
+}
+
+.sheet-roll-button:active,
+.sheet-sleep-button:active,
+.sheet-tab-button:active,
+.sheet-skill-roll-button:active,
+.sheet-ability-card .sheet-stat-roll-button:active,
+.sheet-save-card .sheet-stat-roll-button:active,
+.sheet-exploration-roll-button:active,
+.sheet-weapons-panel .sheet-weapon-show-button:active,
+.sheet-weapons-panel .sheet-weapon-attack-button:active,
+.sheet-magic-panel .sheet-book-button:active,
+.sheet-magic-panel .sheet-spell-cast-button:active {
+  box-shadow:
+    inset 0 2px 4px rgba(36, 31, 26, 0.55),
+    0 0 0 1px rgba(255, 215, 0, 0.35) !important;
+  transform: translateY(1px);
+}
+
+.sheet-initiative-button {
+  background:
+    linear-gradient(180deg, #ffd700 0%, #d9a92a 54%, #a87530 100%) !important;
+  color: #17265f !important;
+  border-color: #fff4a8 !important;
+  text-shadow: 0 1px 0 rgba(255, 248, 220, 0.7) !important;
+  letter-spacing: 1px;
+}
+
+.sheet-weapon-show-button::before,
+.sheet-magic-panel .sheet-book-button::before {
+  color: #fff8dc !important;
+}
+
+.sheet-equipped-list,
+.sheet-packed-list {
+  border: 1px solid #b08d57;
+  background: #fffdf5;
+  box-shadow: inset 0 0 0 1px #fff8dc;
+}
+
+.sheet-equipped-list input,
+.sheet-packed-list input {
+  background: #fffdf5 !important;
+  border-bottom-color: #d2bf8a !important;
+}
+
+.sheet-item-note,
+.sheet-equipment-note,
+.sheet-spell-field-with-help span {
+  color: #6a4a2d;
+}
+
+.sheet-slot-overdrawn[value="1"] + input.sheet-spell-available {
+  color: #9b1c12 !important;
+  border-color: #9b1c12 !important;
+  background: #fff0e8 !important;
+  box-shadow: 0 0 0 1px rgba(155, 28, 18, 0.25);
+}
+
+.sheet-eveskyr .repcontrol {
+  border-top: 1px dotted #b08d57;
+}
+
+.sheet-eveskyr .repcontrol .repcontrol_add::after,
+.sheet-eveskyr .repcontrol .repcontrol_edit::after {
+  color: #fff8dc;
+}
