@@ -1,0 +1,1606 @@
+<!--
+Eveskyr OSE Character Sheet
+Version: 3.3-beta
+System: Old School Essentials
+Campaign: Eveskyr / Highforge
+
+Changelog 3.3-beta:
+- Removed inherited player ability-card layout from NPC stat and attack cards.
+- Rebuilt NPC left stat rows so labels, inputs, selects and roll buttons align in one row and use full width.
+- Rebuilt NPC attack blocks so attack buttons sit on the attack header line and attack fields are compact.
+- NPC attack chat output now uses Opis for Stany and has a separate Ilość row.
+- No sheet-worker behavior changed.
+
+Changelog 3.2-beta:
+- Cleaned up NPC / Monster Statystyka layout after first visual test.
+- Aligned NPC name header with the section ornament/diamond.
+- Enlarged NPC field labels and forced left-aligned internal layout.
+- Expanded NPC inputs/selects to fill available row space.
+- Rebuilt attack blocks so Ilość, Typ and Obr. sit on one compact line, with Stany below.
+- Kept NPC roll formulas, roll template and sheet workers unchanged.
+
+Changelog 3.1-beta:
+- Replaced the NPC / Monster placeholder section with a Statystyka section.
+- Added NPC-specific attributes for name, AC/KP, HD/KŻ, THAC0, movement, saves, morale, alignment, XP, number appearing, and spellcaster flag.
+- Added four static NPC attack blocks with attack/damage roll buttons.
+- Added GM-whispered number appearing rolls for lair and wilderness.
+- Added strict-less success logic to the Eveskyr roll template for NPC morale.
+
+Changelog 3.0-beta:
+- Added an experimental sheet mode switch in the header area.
+- Default mode shows the existing player character sheet.
+- NPC / Potwór mode hides the player character sheet and shows a new simplified NPC layer.
+- Added a placeholder NPC / Monster section titled Testowa for future development.
+- Existing roll template and sheet-worker behavior remain unchanged.
+
+Changelog 2.5:
+- In Tożsamość > Eveskyr / Highforge, replaced the Kontakty textarea with Zobowiązania using attr_eveskyrObligations.
+- Added a new repeating Kontakty section on the Tożsamość tab.
+- Contact rows store name, role, location, and a local reaction modifier.
+- Contact reaction rolls use the same Charisma reaction modifier as the Eksploracja reaction roll plus the contact modifier.
+- Reaction rolls now display a descriptive attitude result in chat.
+
+Changelog 2.4:
+- CSS change .sheet-money-panel .sheet-money-row bottom: 20px !important; to bottom: 5px !important;
+- No roll template, or sheet-worker behavior changed.
+
+Changelog 2.2.4:
+- Changed the Opis postaci textarea attribute from attr_eveskyrObligations to attr_characterDescription because the sheet is not yet in production.
+- No CSS, roll template, or sheet-worker behavior changed.
+
+Changelog 2.2.3:
+- Renamed the visible Tożsamość > Eveskyr / Highforge text field from Zobowiązania to Opis postaci.
+- Updated the field placeholder for character appearance/description notes.
+- No CSS, roll template, or sheet-worker behavior changed.
+
+Changelog 2.2.2:
+- Globally removed browser spinner arrows from numeric input fields.
+- Preserved numeric input values and behavior while freeing the internal field space previously occupied by stepper controls.
+- No sheet-worker behavior changed.
+
+Changelog 2.2.1:
+- Adjusted Ekwipunek > money row so the inputs sit 20px above the bottom border of the money panel.
+- Preserved the section height and existing coin labels/background.
+
+Changelog 2.2:
+- Promoted the money-background experiment into a stable visual pass.
+- In Ekwipunek > Pieniądze, removed the visible section title while preserving the panel height.
+- Removed the yellow horizontal header line from the money panel.
+- Renamed coin labels to Kopec, Crona, Halav, Royal, and Emperor.
+- No sheet-worker behavior changed.
+
+Changelog 2.1.14-beta:
+- Corrected the dedicated Pieniądze panel background to use back_lightcream_money.jpg at its intended 672x114px proportion.
+- Prevented tiling/resizing artifacts in the money panel and removed repeating coin fragments from money inputs.
+- No layout, roll template, or sheet-worker behavior changed.
+
+Changelog 2.1.13-beta:
+- Beta experiment: added a dedicated money-section parchment texture using back_lightcream_money.jpg.
+- Applied only to the Ekwipunek tab money panel, leaving other parchment panels unchanged.
+- No sheet-worker behavior changed.
+
+Changelog 2.1.9:
+- Rebuilt the Eveskyr roll template with inline styles because Roll20 chat was not applying external template CSS reliably.
+- Preserved the 2.1.7/2.1.8 success/failure logic and all roll button calls.
+- No visible character sheet layout or sheet-worker behavior changed.
+
+Changelog 2.1.8:
+- Rebuilt the Eveskyr custom Roll20 roll template markup and CSS for reliable chat styling.
+- Added dual class names with and without the sheet- prefix inside the template to survive Roll20 chat rendering quirks.
+- Added fallback punctuation/spaces in rows so the output remains readable even if CSS fails to load.
+- Kept the success/failure logic from 2.1.7 and did not change the visible sheet layout.
+
+Changelog 2.1.7:
+- Added custom Roll20 roll template &{template:eveskyr} styled to match the sheet: royal blue, gold, granite header and parchment body.
+- Updated roll buttons to use the Eveskyr template.
+- Ability, save, exploration, loyalty, and skill rolls now display SUKCES or PORAŻKA when a target check is provided.
+- Based on stable version 2.1.5; rejected 2.1.6 alignment experiment is not included.
+
+Changelog 2.1.5:
+- Rebuilt fixed Ability and Saving Throw strips for better interaction readability.
+- Ability modifier labels hidden; ability values, modifiers, and roll buttons centered.
+- Saving Throw titles enlarged and centered; value and roll button aligned tightly in one centered row.
+
+Based on v1.0 custom sheet and existing OSE attribute names from Old School Essentials by Necrotic Gnome / wesbaker
+
+Changelog 2.1.4:
+- Improved interaction readability: larger armor worn checkboxes, clearer show/roll icons, stronger micro-labels and slightly safer equipment slot notes.
+- Restored the compact header height and title font size while keeping the black granite header background.
+- No sheet-worker behavior changed from 2.0.
+
+Changelog 2.1.3:
+- Set the header to a fixed 680x200px banner using back_header_granit.jpg.
+- Changed the visible title from Eveskyr OSE to Eveskyr and the subtitle to Karta postaci dla Old School Essentials.
+- Enlarged and left-aligned the header title and subtitle while preserving left padding.
+
+Changelog 2.1.2:
+- Added back_lightcream_paper.jpg as the light cream / parchment texture for panels, cards, fields and parchment-like interiors.
+- No HTML layout or sheet-worker behavior changed from 2.0.
+
+Changelog 2.1.1:
+- Added back_royalblue_satin.jpg as the royal blue texture for the main sheet, header and tab bar.
+
+Changelog 2.1:
+- Style-only release: royal blue base, gold borders, brass/copper accents, stone-like roll buttons and tabs.
+- No HTML layout or sheet-worker behavior changed from 2.0.
+
+Changelog 1.1:
+- Fixed sheet width target: 700px via CSS
+- Added tab navigation using attr_sheetTab
+- Moved Header, Ability Scores, and Saving Throws outside tabs so they appear on every page
+- Changed Zdolności section name to Umiejętności
+- Reorganized content into tabs: Tożsamość, Umiejętności, Eksploracja, Walka, Ekwipunek, Magia, Notatki
+- Removed old repeating_items equipment section from visible sheet
+
+Changelog 1.2:
+- Tightened fixed Ability Scores and Saving Throws strips for 700px sheet width
+- Removed visible section headers from fixed Ability Scores and Saving Throws strips
+- Replaced roll button text in fixed strips with a dice icon only
+- Kept money in Ekwipunek tab
+
+Changelog 1.3:
+- Moved fixed-strip roll buttons into the same horizontal row as the main Ability Score and Saving Throw values
+- Removed visible dice emoji text from fixed-strip roll buttons and kept tooltip titles for accessibility
+- Added compact stat-row styling and removed button border/box-shadow artifacts in fixed strips
+
+Changelog 1.5.1:
+- Ability, saving throw, and skill rolls now show real modified roll results instead of only 0/1 comparisons
+- Added ?{Modyfikator rzutu|0} query to ability score checks, saving throws, and skills
+
+Changelog 1.7.3:
+- Adjusted spell list layout to use fluid grid columns instead of percentage widths
+- Prevented spell rows from overflowing the Magic panel
+- Preserved spell roll formula and meditation checkbox behavior
+
+Changelog 1.7.5:
+- Added Sen action button to the spell limits title row
+- Sen clears all Wymedytowane checkboxes in repeating_spells and recalculates available spell slots
+- Restyled spell cast roll button to match skill roll buttons
+
+
+Changelog 1.12:
+- Rebuilt Eksploracja tab into separate three-column micro sections
+- Added automatic Wyważanie, Reakcja, Lojalność, and max retainers values
+- Removed Tożsamość Pokaż status button and Notatki Pokaż podsumowanie button
+- Replaced Sekrety with Języki
+- Added party initiative button in Walka tab
+
+Changelog 1.10:
+- Rebuilt combat tab top panels: Życie i Rozwój and Walka
+- v1.10.1: Corrected armor bonus math and restored equal combat top panels
+- Added computed readonly KP from worn armor/shields/magic bonuses
+- Added Bez zbroi option to repeating_armor
+- Restyled spell book button to match weapon show button
+-->
+<div class="sheet-eveskyr">
+<header class="sheet-header">
+<div>
+<h1 data-i18n="sheet-title">Eveskyr</h1>
+<p data-i18n="sheet-subtitle">Karta postaci dla Old School Essentials</p>
+</div>
+</header>
+<input aria-label="Przełącz widok NPC / Potwora" class="sheet-npc-mode-toggle" data-i18n-aria-label="npc-monster" data-i18n-title="npc-monster" name="attr_sheetMode" title="Przełącz widok NPC / Potwora" type="checkbox" value="npc"/>
+<span class="sheet-mode-switch-label" data-i18n="npc-monster">NPC / Potwór</span>
+<div class="sheet-pc-sheet">
+<section class="sheet-panel sheet-abilities sheet-fixed-strip sheet-compact-abilities">
+<div class="sheet-ability-grid">
+<div class="sheet-ability-card">
+<label data-i18n="strength">Siła</label>
+<div class="sheet-stat-row">
+<input class="sheet-big-number" name="attr_str" type="number"/>
+<button aria-label="Test Siły" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="strength" data-i18n-title="strength" name="roll_STR" title="Test Siły" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Test Siły}} {{subtitle=Cechy}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{str}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_under=1}}"></button>
+</div>
+<span data-i18n="bonus-str">Bonus STR</span>
+<input name="attr_BonusSTR" readonly="" type="number"/>
+</div>
+<div class="sheet-ability-card">
+<label data-i18n="intelligence">Intelekt</label>
+<div class="sheet-stat-row">
+<input class="sheet-big-number" name="attr_int" type="number"/>
+<button aria-label="Test Intelektu" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="intelligence" data-i18n-title="intelligence" name="roll_INT" title="Test Intelektu" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Test Intelektu}} {{subtitle=Cechy}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{int}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_under=1}}"></button>
+</div>
+<span data-i18n="mod-int">Mod INT</span>
+<input name="attr_intMod" readonly="" type="number"/>
+</div>
+<div class="sheet-ability-card">
+<label data-i18n="wisdom">Rozsądek</label>
+<div class="sheet-stat-row">
+<input class="sheet-big-number" name="attr_wis" type="number"/>
+<button aria-label="Test Rozsądku" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="wisdom" data-i18n-title="wisdom" name="roll_WIS" title="Test Rozsądku" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Test Rozsądku}} {{subtitle=Cechy}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{wis}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_under=1}}"></button>
+</div>
+<span data-i18n="mod-wis">Mod WIS</span>
+<input name="attr_wisMod" readonly="" type="number"/>
+</div>
+<div class="sheet-ability-card">
+<label data-i18n="dexterity">Zręczność</label>
+<div class="sheet-stat-row">
+<input class="sheet-big-number" name="attr_dex" type="number"/>
+<button aria-label="Test Zręczności" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="dexterity" data-i18n-title="dexterity" name="roll_DEX" title="Test Zręczności" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Test Zręczności}} {{subtitle=Cechy}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{dex}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_under=1}}"></button>
+</div>
+<span data-i18n="bonus-dex">Bonus DEX</span>
+<input name="attr_BonusDEX" readonly="" type="number"/>
+</div>
+<div class="sheet-ability-card">
+<label data-i18n="constitution">Budowa</label>
+<div class="sheet-stat-row">
+<input class="sheet-big-number" name="attr_con" type="number"/>
+<button aria-label="Test Budowy" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="constitution" data-i18n-title="constitution" name="roll_CON" title="Test Budowy" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Test Budowy}} {{subtitle=Cechy}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{con}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_under=1}}"></button>
+</div>
+<span data-i18n="mod-con-hp">Mod CON do HP</span>
+<input name="attr_HPConMod" readonly="" type="number"/>
+</div>
+<div class="sheet-ability-card">
+<label data-i18n="charisma">Charyzma</label>
+<div class="sheet-stat-row">
+<input class="sheet-big-number" name="attr_cha" type="number"/>
+<button aria-label="Test Charyzmy" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="charisma" data-i18n-title="charisma" name="roll_CHA" title="Test Charyzmy" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Test Charyzmy}} {{subtitle=Cechy}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{cha}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_under=1}}"></button>
+</div>
+<span data-i18n="mod-cha">Mod CHA</span>
+<input name="attr_chaMod" readonly="" type="number"/>
+</div>
+</div>
+</section>
+<section class="sheet-panel sheet-saves-strip sheet-fixed-strip sheet-compact-saves">
+<div class="sheet-save-grid">
+<div class="sheet-save-card">
+<label data-i18n="death-poison">Śmierć / Trucizna</label>
+<div class="sheet-stat-row">
+<input name="attr_saveD" type="number"/>
+<button aria-label="Rzut obronny: Śmierć / Trucizna" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="death-poison" data-i18n-title="death-poison" name="roll_SaveD" title="Rzut obronny: Śmierć / Trucizna" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Rzut obronny}} {{subtitle=Rzut obronny}} {{type=Śmierć / Trucizna}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{saveD}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_over=1}}"></button>
+</div>
+</div>
+<div class="sheet-save-card">
+<label data-i18n="wands">Różdżki</label>
+<div class="sheet-stat-row">
+<input name="attr_saveW" type="number"/>
+<button aria-label="Rzut obronny: Różdżki" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="wands" data-i18n-title="wands" name="roll_SaveW" title="Rzut obronny: Różdżki" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Rzut obronny}} {{subtitle=Rzut obronny}} {{type=Różdżki}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{saveW}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_over=1}}"></button>
+</div>
+</div>
+<div class="sheet-save-card">
+<label data-i18n="paralysis-petrification">Paraliż / Petryfikacja</label>
+<div class="sheet-stat-row">
+<input name="attr_saveP" type="number"/>
+<button aria-label="Rzut obronny: Paraliż / Petryfikacja" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="paralysis-petrification" data-i18n-title="paralysis-petrification" name="roll_SaveP" title="Rzut obronny: Paraliż / Petryfikacja" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Rzut obronny}} {{subtitle=Rzut obronny}} {{type=Paraliż / Petryfikacja}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{saveP}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_over=1}}"></button>
+</div>
+</div>
+<div class="sheet-save-card">
+<label data-i18n="breath-attacks">Zionięcia</label>
+<div class="sheet-stat-row">
+<input name="attr_saveB" type="number"/>
+<button aria-label="Rzut obronny: Zionięcia" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="breath-attacks" data-i18n-title="breath-attacks" name="roll_SaveB" title="Rzut obronny: Zionięcia" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Rzut obronny}} {{subtitle=Rzut obronny}} {{type=Zionięcia}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{saveB}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_over=1}}"></button>
+</div>
+</div>
+<div class="sheet-save-card">
+<label data-i18n="spells-save">Czary</label>
+<div class="sheet-stat-row">
+<input name="attr_saveS" type="number"/>
+<button aria-label="Rzut obronny: Czary" class="sheet-roll-button sheet-stat-roll-button sheet-skill-roll-button" data-i18n-aria-label="spells-save" data-i18n-title="spells-save" name="roll_SaveS" title="Rzut obronny: Czary" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Rzut obronny}} {{subtitle=Rzut obronny}} {{type=Czary}} {{roll=[[1d20 + ?{Modyfikator rzutu|0}]]}} {{target=[[@{saveS}]]}} {{mod=?{Modyfikator rzutu|0}}} {{check_over=1}}"></button>
+</div>
+</div>
+</div>
+</section>
+<input class="sheet-tabstoggle" name="attr_sheetTab" type="hidden" value="identity"/>
+<nav class="sheet-tab-buttons">
+<button class="sheet-tab-button" data-i18n="tab-identity" name="act_tab_identity" type="action">Tożsamość</button>
+<button class="sheet-tab-button" data-i18n="tab-skills" name="act_tab_skills" type="action">Umiejętności</button>
+<button class="sheet-tab-button" data-i18n="tab-exploration" name="act_tab_exploration" type="action">Eksploracja</button>
+<button class="sheet-tab-button" data-i18n="tab-combat" name="act_tab_combat" type="action">Walka</button>
+<button class="sheet-tab-button" data-i18n="tab-equipment" name="act_tab_equipment" type="action">Ekwipunek</button>
+<button class="sheet-tab-button" data-i18n="tab-magic" name="act_tab_magic" type="action">Magia</button>
+<button class="sheet-tab-button" data-i18n="tab-notes" name="act_tab_notes" type="action">Notatki</button>
+</nav>
+<div class="sheet-tab-content">
+<div class="sheet-tab-panel sheet-tab-identity">
+<section class="sheet-panel sheet-identity">
+<div class="sheet-grid sheet-identity-row">
+<label><span data-i18n="name">Imię</span><input name="attr_character_name" type="text"/>
+</label>
+<label><span data-i18n="race">Rasa</span><select name="attr_race">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="human" value="Człowiek">Człowiek</option>
+<option data-i18n="elf" value="Elf">Elf</option>
+<option data-i18n="gnome" value="Gnom">Gnom</option>
+<option data-i18n="dwarf" value="Krasnolud">Krasnolud</option>
+<option data-i18n="halfling" value="Niziołek">Niziołek</option>
+</select>
+</label>
+<label><span data-i18n="class">Klasa</span><input name="attr_class" type="text"/>
+</label>
+<label><span data-i18n="alignment">Charakter</span><select name="attr_alignment">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="lawful" value="Prawo">Prawo</option>
+<option data-i18n="neutral" value="Neutralny">Neutralny</option>
+<option data-i18n="chaotic" value="Chaos">Chaos</option>
+</select>
+</label>
+<label><span data-i18n="level">Poziom</span><input name="attr_level" type="number"/>
+</label>
+</div>
+</section>
+<input class="sheet-race-toggle" name="attr_race" type="hidden" value=""/>
+<input class="sheet-clan-toggle" name="attr_eveskyrClan" type="hidden" value=""/>
+<input class="sheet-corporation-toggle" name="attr_eveskyrCorporation" type="hidden" value=""/>
+<section class="sheet-panel sheet-eveskyr-lore">
+<h2 data-i18n="eveskyr-highforge">Eveskyr / Highforge</h2>
+<div class="sheet-grid sheet-eveskyr-top-row">
+<div class="sheet-clan-field">
+<label data-i18n="clan-house">Ród</label>
+<select class="sheet-clan-select sheet-clan-none" disabled="">
+<option data-i18n="choose-race">Wybierz rasę...</option>
+</select>
+<select class="sheet-clan-select sheet-clan-human" name="attr_eveskyrClan_human">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="thyatis" value="Thyatis">Thyatis</option>
+<option data-i18n="traladara" value="Traladara">Traladara</option>
+<option data-i18n="other" value="inny">inny</option>
+</select>
+<select class="sheet-clan-select sheet-clan-elf" name="attr_eveskyrClan_elf">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="callarii" value="Callarii">Callarii</option>
+<option data-i18n="vyalia" value="Vyalia">Vyalia</option>
+<option data-i18n="other" value="inny">inny</option>
+</select>
+<select class="sheet-clan-select sheet-clan-gnome" name="attr_eveskyrClan_gnome">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="sheet-title" value="Eveskyr">Eveskyr</option>
+<option data-i18n="other" value="inny">inny</option>
+</select>
+<select class="sheet-clan-select sheet-clan-dwarf" name="attr_eveskyrClan_dwarf">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="stronghollow" value="Stronghollow">Stronghollow</option>
+<option data-i18n="other" value="inny">inny</option>
+</select>
+<select class="sheet-clan-select sheet-clan-halfling" name="attr_eveskyrClan_halfling">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="hinhome" value="Hinhome">Hinhome</option>
+<option data-i18n="other" value="inny">inny</option>
+</select>
+</div>
+<div class="sheet-corporation-field">
+<label data-i18n="corporation">Korporacja</label>
+<select class="sheet-corporation-disabled" disabled="">
+<option data-i18n="no-corporation">Brak / niezrzeszony</option>
+</select>
+<select class="sheet-corporation-active" name="attr_eveskyrCorporation">
+<option data-i18n="no-corporation" value="Brak">Brak / niezrzeszony</option>
+<option data-i18n="security" value="Bezpieczeństwo">Bezpieczeństwo</option>
+<option data-i18n="mining" value="Górnictwo">Górnictwo</option>
+<option data-i18n="invention" value="Wynalazczość">Wynalazczość</option>
+<option data-i18n="engineering" value="Inżynieria">Inżynieria</option>
+<option data-i18n="culture" value="Kultura">Kultura</option>
+<option data-i18n="trade" value="Handel">Handel</option>
+<option data-i18n="craft" value="Rzemiosło">Rzemiosło</option>
+</select>
+</div>
+<label><span data-i18n="patron">Patron</span><input data-i18n-placeholder="placeholder-patron" name="attr_eveskyrPatron" placeholder="np. Dromgar Goldvein" type="text"/>
+</label>
+<div class="sheet-status-field">
+<label data-i18n="social-position">Pozycja społeczna</label>
+<select class="sheet-status-select sheet-status-disabled" disabled="">
+<option data-i18n="outside-corporation">Brak / poza korporacją</option>
+</select>
+<select class="sheet-status-select sheet-status-security" name="attr_eveskyrStatus_security">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-security-1" value="I — Rekrut">I — Rekrut</option>
+<option data-i18n="rank-security-2" value="II — Strażnik">II — Strażnik</option>
+<option data-i18n="rank-security-3" value="III — Starszy Strażnik">III — Starszy Strażnik</option>
+<option data-i18n="rank-security-4" value="IV — Kapral / Sierżant">IV — Kapral / Sierżant</option>
+<option data-i18n="rank-security-5" value="V — Kapitan">V — Kapitan</option>
+<option data-i18n="rank-security-6" value="VI — Komendant">VI — Komendant</option>
+</select>
+<select class="sheet-status-select sheet-status-mining" name="attr_eveskyrStatus_mining">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-mining-1" value="I — Młotek">I — Młotek</option>
+<option data-i18n="rank-mining-2" value="II — Gwarek pocztowy">II — Gwarek pocztowy</option>
+<option data-i18n="rank-mining-3" value="III — Gwarek przodkowy">III — Gwarek przodkowy</option>
+<option data-i18n="rank-mining-4" value="IV — Sztygar">IV — Sztygar</option>
+<option data-i18n="rank-mining-5" value="V — Bergmeister">V — Bergmeister</option>
+<option data-i18n="rank-mining-6" value="VI — Gildmistrz żył">VI — Gildmistrz żył</option>
+</select>
+<select class="sheet-status-select sheet-status-trade" name="attr_eveskyrStatus_trade">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-trade-1" value="I — Aplikant">I — Aplikant</option>
+<option data-i18n="rank-trade-2" value="II — Agent Handlowy">II — Agent Handlowy</option>
+<option data-i18n="rank-trade-3" value="III — Starszy Agent">III — Starszy Agent</option>
+<option data-i18n="rank-trade-4" value="IV — Zarządca Faktorii">IV — Zarządca Faktorii</option>
+<option data-i18n="rank-trade-5" value="V — Mistrz Kontraktów">V — Mistrz Kontraktów</option>
+<option data-i18n="rank-trade-6" value="VI — Wielki Faktor">VI — Wielki Faktor</option>
+</select>
+<select class="sheet-status-select sheet-status-engineering" name="attr_eveskyrStatus_engineering">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-engineering-1" value="I — Kreślarz">I — Kreślarz</option>
+<option data-i18n="rank-engineering-2" value="II — Inżynier">II — Inżynier</option>
+<option data-i18n="rank-engineering-3" value="III — Starszy Inżynier">III — Starszy Inżynier</option>
+<option data-i18n="rank-engineering-4" value="IV — Kierownik Budowy">IV — Kierownik Budowy</option>
+<option data-i18n="rank-engineering-5" value="V — Mistrz Konstrukcji">V — Mistrz Konstrukcji</option>
+<option data-i18n="rank-engineering-6" value="VI — Naczelny Architekt">VI — Naczelny Architekt</option>
+</select>
+<select class="sheet-status-select sheet-status-culture" name="attr_eveskyrStatus_culture">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-culture-1" value="I — Kopista">I — Kopista</option>
+<option data-i18n="rank-culture-2" value="II — Kronikarz">II — Kronikarz</option>
+<option data-i18n="rank-culture-3" value="III — Starszy Kronikarz">III — Starszy Kronikarz</option>
+<option data-i18n="rank-culture-4" value="IV — Archiwista">IV — Archiwista</option>
+<option data-i18n="rank-culture-5" value="V — Mistrz Tradycji">V — Mistrz Tradycji</option>
+<option data-i18n="rank-culture-6" value="VI — Strażnik Dziedzictwa">VI — Strażnik Dziedzictwa</option>
+</select>
+<select class="sheet-status-select sheet-status-craft" name="attr_eveskyrStatus_craft">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-craft-1" value="I — Uczeń">I — Uczeń</option>
+<option data-i18n="rank-craft-2" value="II — Czeladnik">II — Czeladnik</option>
+<option data-i18n="rank-craft-3" value="III — Starszy Czeladnik">III — Starszy Czeladnik</option>
+<option data-i18n="rank-craft-4" value="IV — Warsztatmistrz">IV — Warsztatmistrz</option>
+<option data-i18n="rank-craft-5" value="V — Mistrz">V — Mistrz</option>
+<option data-i18n="rank-craft-6" value="VI — Pierwszy Mistrz">VI — Pierwszy Mistrz</option>
+</select>
+<select class="sheet-status-select sheet-status-invention" name="attr_eveskyrStatus_invention">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="rank-invention-1" value="I — Pomocnik Warsztatowy">I — Pomocnik Warsztatowy</option>
+<option data-i18n="rank-invention-2" value="II — Konstruktor">II — Konstruktor</option>
+<option data-i18n="rank-invention-3" value="III — Starszy Konstruktor">III — Starszy Konstruktor</option>
+<option data-i18n="rank-invention-4" value="IV — Kierownik Projektu">IV — Kierownik Projektu</option>
+<option data-i18n="rank-invention-5" value="V — Mistrz Wynalazca">V — Mistrz Wynalazca</option>
+<option data-i18n="rank-invention-6" value="VI — Arcymistrz Rozwoju">VI — Arcymistrz Rozwoju</option>
+</select>
+</div>
+</div>
+<div class="sheet-reputation-block">
+<div class="sheet-reputation-header">
+<span data-i18n="reputation-in">Reputacja w...</span>
+<span data-i18n="reputation-type">Typ reputacji</span>
+</div>
+<fieldset class="repeating_reputation">
+<div class="sheet-reputation-row">
+<input data-i18n-placeholder="placeholder-reputation-place" name="attr_reputationPlace" placeholder="np. Eveskyr" type="text"/>
+<input data-i18n-placeholder="placeholder-reputation-type" name="attr_reputationType" placeholder="np. znany, podejrzany, mile widziany" type="text"/>
+</div>
+</fieldset>
+</div>
+<div class="sheet-grid sheet-grid-3 sheet-eveskyr-text-row">
+<label><span data-i18n="character-description">Opis postaci</span><textarea data-i18n-placeholder="placeholder-character-description" name="attr_characterDescription" placeholder="Wygląd, ubiór, znaki szczególne, głos, maniery..."></textarea>
+</label>
+<label><span data-i18n="obligations">Zobowiązania</span><textarea data-i18n-placeholder="placeholder-obligations" name="attr_eveskyrObligations" placeholder="Długi, przysięgi, rodzinne obowiązki, kontrakty, obietnice..."></textarea>
+</label>
+<label><span data-i18n="languages">Języki</span><textarea data-i18n-placeholder="placeholder-languages" name="attr_languages" placeholder="Znane języki, dialekty, pisma, sekretny żargon..."></textarea>
+</label>
+</div>
+</section>
+<section class="sheet-panel sheet-contacts-panel">
+<h2 data-i18n="contacts">Kontakty</h2>
+<div class="sheet-contacts-header">
+<span></span>
+<span data-i18n="name-or-title">Imię lub nazwa</span>
+<span data-i18n="who-is">Kim jest</span>
+<span data-i18n="where">Gdzie</span>
+<span data-i18n="modifier-short">Mod.</span>
+</div>
+<fieldset class="repeating_contacts">
+<div class="sheet-contact-row">
+<button aria-label="Reakcja kontaktu" class="sheet-skill-roll-button sheet-contact-reaction-button" data-i18n-aria-label="reaction" data-i18n-title="reaction" name="roll_contactReaction" title="Reakcja kontaktu" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Reakcja kontaktu}} {{subtitle=@{contactName}}} {{type=@{contactRole}}} {{location=@{contactLocation}}} {{roll=[[2d6 + @{explorationReactionMod} + @{contactReactionMod}]]}} {{mod=[[@{explorationReactionMod} + @{contactReactionMod}]]}} {{reaction=1}}">
+</button>
+<input aria-label="Imię lub nazwa kontaktu" data-i18n-aria-label="name-or-title" data-i18n-placeholder="placeholder-contact-name" data-i18n-title="name-or-title" name="attr_contactName" placeholder="np. Gernik Coppergear" title="Imię lub nazwa kontaktu" type="text"/>
+<input aria-label="Kim jest kontakt" data-i18n-aria-label="who-is" data-i18n-placeholder="placeholder-contact-role" data-i18n-title="who-is" name="attr_contactRole" placeholder="np. audytor wejść" title="Kim jest kontakt" type="text"/>
+<input aria-label="Gdzie można spotkać kontakt" data-i18n-aria-label="where" data-i18n-placeholder="placeholder-contact-location" data-i18n-title="where" name="attr_contactLocation" placeholder="np. gnomi pałac" title="Gdzie można spotkać kontakt" type="text"/>
+<input aria-label="Modyfikator reakcji kontaktu" data-i18n-aria-label="modifier-short" data-i18n-placeholder="0" data-i18n-title="modifier-short" max="9" min="-9" name="attr_contactReactionMod" placeholder="0" step="1" title="Modyfikator reakcji kontaktu" type="number" value="0"/>
+</div>
+</fieldset>
+</section>
+</div>
+<div class="sheet-tab-panel sheet-tab-skills">
+<section class="sheet-panel sheet-skills-panel">
+<h2 data-i18n="tab-skills">Umiejętności</h2>
+<div class="sheet-skills-header">
+<span></span>
+<span data-i18n="ability-name">Nazwa umiejętności</span>
+<span data-i18n="roll">Rzut</span>
+<span data-i18n="vs">vs</span>
+<span data-i18n="target">Próg</span>
+<span data-i18n="description">Opis</span>
+</div>
+<fieldset class="repeating_abilities">
+<div class="sheet-skill-row">
+<button aria-label="Rzut na umiejętność" class="sheet-skill-roll-button" data-i18n-aria-label="roll" data-i18n-title="roll" name="roll_abilityRoll" title="Rzut na umiejętność" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Rzut na @{abilityName}}} {{subtitle=Umiejętność}} {{roll=[[@{abilityRoll} + ?{Modyfikator rzutu|0}]]}} {{target=[[@{abilityThreshold}]]}} @{abilityDirection} {{mod=?{Modyfikator rzutu|0}}} {{description=@{abilityDescription}}}">
+</button>
+<input data-i18n-placeholder="placeholder-skill-name" name="attr_abilityName" placeholder="np. Wyczucie kamienia" type="text"/>
+<input data-i18n-placeholder="1d6" name="attr_abilityRoll" placeholder="1d6" type="text"/>
+<select aria-label="Kierunek testu" data-i18n-aria-label="vs" data-i18n-title="vs" name="attr_abilityDirection" title="Kierunek testu">
+<option data-i18n="less-than" value="{{check_under=1}}">&lt;</option>
+<option data-i18n="greater-than" value="{{check_over=1}}">&gt;</option>
+</select>
+<input data-i18n-placeholder="2" name="attr_abilityThreshold" placeholder="2" type="number"/>
+<input data-i18n-placeholder="placeholder-skill-description" name="attr_abilityDescription" placeholder="Krótki opis umiejętności" type="text"/>
+</div>
+</fieldset>
+</section>
+</div>
+<div class="sheet-tab-panel sheet-tab-exploration">
+<section class="sheet-panel sheet-movement-panel">
+<h2 data-i18n="movement-speed">Szybkość poruszania się</h2>
+<div class="sheet-movement-row">
+<label><span data-i18n="encounter">Spotkanie</span><input aria-label="Tempo ruchu podczas spotkania" data-i18n-aria-label="encounter" data-i18n-title="encounter" name="attr_movementEncounter" readonly="" title="Tempo ruchu podczas spotkania" type="text"/>
+</label>
+<label><span data-i18n="tab-exploration">Eksploracja</span><input aria-label="Tempo ruchu podczas eksploracji" data-i18n-aria-label="dungeon-exploration" data-i18n-title="dungeon-exploration" name="attr_movementExploration" readonly="" title="Tempo ruchu podczas eksploracji" type="text"/>
+</label>
+<label><span data-i18n="overland-travel">Podróż</span><input aria-label="Tempo ruchu podczas podróży" data-i18n-aria-label="overland-travel" data-i18n-title="overland-travel" name="attr_movementOverland" readonly="" title="Tempo ruchu podczas podróży" type="text"/>
+</label>
+</div>
+</section>
+<div class="sheet-exploration-tests-grid">
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="listen-at-door">Nasłuchiwanie</label>
+<div class="sheet-exploration-check-row">
+<input aria-label="Nasłuchiwanie" data-i18n-aria-label="listen-at-door" data-i18n-title="target" max="6" min="1" name="attr_ListenDoor" title="Sukces na 1k6 równy lub niższy od tej wartości" type="number" value="1"/>
+<button aria-label="Nasłuchiwanie" class="sheet-skill-roll-button sheet-exploration-roll-button" data-i18n-aria-label="listen-at-door" data-i18n-title="listen-at-door" name="roll_ListenDoor" title="Nasłuchiwanie" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Nasłuchiwanie}} {{subtitle=Eksploracja}} {{roll=[[1d6]]}} {{target=[[@{ListenDoor}]]}} {{check_under=1}}"></button>
+</div>
+</section>
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="force-door">Wyważanie</label>
+<div class="sheet-exploration-check-row">
+<input aria-label="Wyważanie" data-i18n-aria-label="force-door" name="attr_OpenDoor" readonly="" title="2 + modyfikator z Siły, minimum 1" type="number"/>
+<button aria-label="Wyważanie" class="sheet-skill-roll-button sheet-exploration-roll-button" data-i18n-aria-label="force-door" data-i18n-title="force-door" name="roll_OpenDoor" title="Wyważanie" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Wyważanie}} {{subtitle=Eksploracja}} {{roll=[[1d6]]}} {{target=[[@{OpenDoor}]]}} {{check_under=1}}"></button>
+</div>
+</section>
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="secret-doors">Tajne przejścia</label>
+<div class="sheet-exploration-check-row">
+<input aria-label="Tajne przejścia" data-i18n-aria-label="secret-doors" data-i18n-title="target" max="6" min="1" name="attr_FindSecretDoor" title="Sukces na 1k6 równy lub niższy od tej wartości" type="number" value="1"/>
+<button aria-label="Tajne przejścia" class="sheet-skill-roll-button sheet-exploration-roll-button" data-i18n-aria-label="secret-doors" data-i18n-title="secret-doors" name="roll_FindSecretDoor" title="Tajne przejścia" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Tajne przejścia}} {{subtitle=Eksploracja}} {{roll=[[1d6]]}} {{target=[[@{FindSecretDoor}]]}} {{check_under=1}}"></button>
+</div>
+</section>
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="room-trap">Duża pułapka</label>
+<div class="sheet-exploration-check-row">
+<input aria-label="Duża pułapka" data-i18n-aria-label="room-trap" data-i18n-title="target" max="6" min="1" name="attr_FindRoomTrap" title="Sukces na 1k6 równy lub niższy od tej wartości" type="number" value="1"/>
+<button aria-label="Duża pułapka" class="sheet-skill-roll-button sheet-exploration-roll-button" data-i18n-aria-label="room-trap" data-i18n-title="room-trap" name="roll_FindRoomTrap" title="Duża pułapka" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Duża pułapka}} {{subtitle=Eksploracja}} {{roll=[[1d6]]}} {{target=[[@{FindRoomTrap}]]}} {{check_under=1}}"></button>
+</div>
+</section>
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="reaction">Reakcja</label>
+<div class="sheet-exploration-check-row">
+<input aria-label="Modyfikator reakcji" data-i18n-title="modifier" name="attr_explorationReactionMod" readonly="" title="Modyfikator reakcji z Charyzmy" type="number"/>
+<button aria-label="Reakcja" class="sheet-skill-roll-button sheet-exploration-roll-button" data-i18n-aria-label="reaction" data-i18n-title="reaction" name="roll_NPCReaction" title="Reakcja" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Reakcja}} {{subtitle=Eksploracja}} {{roll=[[2d6 + @{explorationReactionMod}]]}} {{mod=@{explorationReactionMod}}} {{reaction=1}}"></button>
+</div>
+</section>
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="loyalty">Lojalność</label>
+<div class="sheet-exploration-check-row">
+<input aria-label="Lojalność" data-i18n-aria-label="loyalty" data-i18n-title="loyalty" name="attr_retainersLoyalty" readonly="" title="Lojalność zależna od Charyzmy" type="number"/>
+<button aria-label="Lojalność" class="sheet-skill-roll-button sheet-exploration-roll-button" data-i18n-aria-label="loyalty" data-i18n-title="loyalty" name="roll_RetainerLoyalty" title="Lojalność" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Lojalność}} {{subtitle=Eksploracja}} {{roll=[[2d6]]}} {{target=[[@{retainersLoyalty}]]}} {{check_under=1}}"></button>
+</div>
+</section>
+<section class="sheet-panel sheet-exploration-check">
+<label data-i18n="retainers">Najemnicy</label>
+<div class="sheet-exploration-check-row sheet-exploration-no-roll">
+<input aria-label="Maksymalna liczba najemników" data-i18n-aria-label="retainers" data-i18n-title="retainers" name="attr_retainersMax" readonly="" title="Maksymalna liczba najemników zależna od Charyzmy" type="number"/>
+</div>
+</section>
+</div>
+</div>
+<div class="sheet-tab-panel sheet-tab-combat">
+<div class="sheet-combat-top-grid">
+<section class="sheet-panel sheet-life-panel">
+<h2 data-i18n="life-development">Życie i rozwój</h2>
+<div class="sheet-life-row sheet-life-row-top">
+<label>
+<span data-i18n="level">Poziom</span>
+<input aria-label="Poziom postaci" data-i18n-aria-label="level" data-i18n-title="level" max="99" name="attr_level" title="Poziom postaci" type="number"/>
+</label>
+<label>
+<span data-i18n="hp">PŻ</span>
+<input aria-label="Punkty życia" data-i18n-aria-label="hp" data-i18n-title="hp" max="999" min="0" name="attr_HP" title="Punkty życia" type="number"/>
+</label>
+<label>
+<span data-i18n="hp-max">PŻ maks</span>
+<input aria-label="Maksymalne punkty życia" data-i18n-aria-label="hp-max" data-i18n-title="hp-max" max="999" min="0" name="attr_HP_max" title="Maksymalne punkty życia" type="number"/>
+</label>
+</div>
+<div class="sheet-life-row sheet-life-row-bottom">
+<label>
+<span data-i18n="xp">PD</span>
+<input aria-label="Punkty doświadczenia" data-i18n-aria-label="xp" data-i18n-title="xp" max="999999" min="0" name="attr_XP" title="Punkty doświadczenia" type="number"/>
+</label>
+<label>
+<span data-i18n="next-level">Nast POZ</span>
+<input aria-label="Punkty doświadczenia na następny poziom" data-i18n-aria-label="next-level" data-i18n-title="next-level" max="999999" min="0" name="attr_Next" title="Punkty doświadczenia na następny poziom" type="number"/>
+</label>
+<label>
+<span data-i18n="xp-bonus">Bonus PD%</span>
+<input aria-label="Bonus do punktów doświadczenia" data-i18n-aria-label="xp-bonus" data-i18n-title="xp-bonus" max="99" min="0" name="attr_ExpPercentage" title="Bonus do punktów doświadczenia" type="number"/>
+</label>
+</div>
+</section>
+<section class="sheet-panel sheet-combat-stats-panel">
+<h2 data-i18n="tab-combat">Walka</h2>
+<div class="sheet-initiative-row">
+<button class="sheet-roll-button sheet-initiative-button" data-i18n="initiative" name="roll_partyInitiative" type="roll" value="&amp;{template:eveskyr} {{name=Inicjatywa drużyny}} {{subtitle=Walka}} {{roll=[[1d6]]}}">INICJATYWA</button>
+</div>
+<div class="sheet-combat-stat-row">
+<label>
+<span data-i18n="thac0">THAC0</span>
+<input aria-label="THAC0 / poziom ataku" data-i18n-aria-label="thac0" data-i18n-title="thac0" name="attr_bab" title="THAC0 / poziom ataku" type="number"/>
+</label>
+<label>
+<span data-i18n="ac">KP</span>
+<input aria-label="Klasa pancerza wyliczana z ubranej ochrony" data-i18n-aria-label="ac" data-i18n-title="ac" name="attr_aacAc" readonly="" title="Klasa pancerza wyliczana z ubranej ochrony" type="number"/>
+</label>
+<label>
+<span data-i18n="pace">TEMPO</span>
+<input aria-label="Ruch podczas spotkania" data-i18n-aria-label="encounter" data-i18n-title="encounter" name="attr_movementEncounter" title="Ruch podczas spotkania" type="text"/>
+</label>
+</div>
+</section>
+</div>
+<section class="sheet-panel sheet-armor-panel">
+<h2 data-i18n="armor-protection">Pancerz i ochrona</h2>
+<div class="sheet-armor-header-row">
+<div data-i18n="name">Nazwa</div>
+<div data-i18n="armor-bonus-ac">+KP</div>
+<div data-i18n="magic-bonus">Magiczność</div>
+<div data-i18n="worn">Ubrane</div>
+<div data-i18n="description">Opis</div>
+</div>
+<fieldset class="repeating_armor">
+<div class="sheet-armor-row">
+<select aria-label="Nazwa pancerza lub tarczy" data-i18n-aria-label="armor-name" data-i18n-title="armor-name" name="attr_armorName" title="Nazwa pancerza lub tarczy">
+<option data-i18n="choose" value="">Wybierz...</option>
+<option data-i18n="see-description" value="Patrz opis -&gt;">Patrz opis -&gt;</option>
+<option data-i18n="leather-armor" value="Zbroja skórzana">Zbroja skórzana</option>
+<option data-i18n="chain-mail" value="Kolczuga">Kolczuga</option>
+<option data-i18n="plate-mail" value="Zbroja płytowa">Zbroja płytowa</option>
+<option data-i18n="shield" value="Tarcza">Tarcza</option>
+</select>
+<input aria-label="Bonus do KP zależny od wybranej ochrony" data-i18n-aria-label="armor-bonus-ac" data-i18n-title="armor-bonus-ac" name="attr_armorValue" readonly="" title="Bonus do KP zależny od wybranej ochrony" type="number"/>
+<input aria-label="Magiczność, np. +1" data-i18n-aria-label="magic-bonus" data-i18n-placeholder="placeholder-plus-one" data-i18n-title="magic-bonus" name="attr_armorMagic" placeholder="np. +1" title="Magiczność, np. +1" type="number"/>
+<div class="sheet-armor-worn-cell">
+<input aria-label="Ubrane" data-i18n-title="worn" name="attr_armorWorn" title="Zaznaczone oznacza ubraną zbroję lub używaną tarczę" type="checkbox" value="1"/>
+</div>
+<input aria-label="Opis, np. dodatkowe korzyści i zasady" data-i18n-aria-label="description" data-i18n-placeholder="placeholder-armor-benefit" name="attr_armorBenefit" placeholder="Np. dodatkowe korzyści i zasady" title="Np. dodatkowe korzyści i zasady" type="text"/>
+</div>
+</fieldset>
+</section>
+<section class="sheet-panel sheet-weapons-panel">
+<h2 data-i18n="weapon">Broń</h2>
+<div class="sheet-weapon-header">
+<span></span>
+<span data-i18n="weapon-name">Nazwa broni</span>
+<span data-i18n="attack-type">Typ ataku</span>
+<span data-i18n="damage">Obrażenia</span>
+<span data-i18n="attack-bonus">+Atak</span>
+<span data-i18n="damage-bonus">+Obra.</span>
+</div>
+<fieldset class="repeating_weapons">
+<div class="sheet-weapon-card">
+<input name="attr_weaponAttributeBonus" type="hidden" value="0"/>
+<input name="attr_weaponAttributeBonusDamage" type="hidden" value="0"/>
+<div class="sheet-weapon-row sheet-weapon-row-main">
+<button aria-label="Pokaż broń" class="sheet-weapon-show-button" data-i18n-aria-label="weapon" data-i18n-title="weapon" name="roll_weaponShow" title="Pokaż broń" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: @{weaponName}}} {{subtitle=Broń}} {{type=@{attackType}}} {{damage=@{weaponDamageDie}}} {{attackbonus=@{weaponAttackBonus}}} {{damagebonus=@{weaponDamageBonus}}} {{description=@{weaponDescription}}}"></button>
+<input data-i18n-placeholder="placeholder-weapon-name" name="attr_weaponName" placeholder="Nazwa broni" title="Nazwa broni" type="text"/>
+<select data-i18n-title="attack-type" name="attr_attackType" title="Typ ataku">
+<option data-i18n="melee" value="Wręcz">Wręcz</option>
+<option data-i18n="ranged" value="Dystansowy">Dystansowy</option>
+<option data-i18n="other-attack" value="Inny">Inny</option>
+</select>
+<input data-i18n-placeholder="placeholder-weapon-damage" data-i18n-title="damage" name="attr_weaponDamageDie" placeholder="np. 1d8" title="Kość obrażeń broni" type="text"/>
+<input data-i18n-title="attack-bonus" name="attr_weaponAttackBonus" title="Bonus do ataku broni" type="number" value="0"/>
+<input data-i18n-title="damage-bonus" name="attr_weaponDamageBonus" title="Bonus do obrażeń broni" type="number" value="0"/>
+</div>
+<div class="sheet-weapon-row sheet-weapon-row-extra">
+<button aria-label="Rzut na atak i obrażenia" class="sheet-skill-roll-button sheet-weapon-attack-button" data-i18n-aria-label="attack" data-i18n-title="attack" name="roll_weaponAttackDamage" title="Rzut na atak i obrażenia" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: Atak bronią}} {{subtitle=@{weaponName}}} {{type=@{attackType}}} {{attack=[[1d20 + @{bab} + @{weaponAttributeBonus} + @{weaponAttackBonus} + ?{Modyfikator ataku|0}]]}} {{damage=[[@{weaponDamageDie} + @{weaponAttributeBonusDamage} + @{weaponDamageBonus} + ?{Modyfikator obrażeń|0}]]}} {{description=@{weaponDescription}}}"></button>
+<input data-i18n-placeholder="placeholder-weapon-description" name="attr_weaponDescription" placeholder="Cechy dodatkowe, np. zasięg, magiczność, specjalizacja" title="Cechy dodatkowe, np. zasięg, magiczność, specjalizacja" type="text"/>
+</div>
+</div>
+</fieldset>
+</section>
+</div>
+<div class="sheet-tab-panel sheet-tab-equipment">
+<section class="sheet-panel sheet-money-panel">
+<h2 aria-label="Pieniądze" class="sheet-money-title" data-i18n-aria-label="money"></h2>
+<div class="sheet-money-row">
+<label><span data-i18n="kopec">Kopec</span><input name="attr_CP" type="number"/>
+</label>
+<label><span data-i18n="crona">Crona</span><input name="attr_SP" type="number"/>
+</label>
+<label><span data-i18n="halav">Halav</span><input name="attr_EP" type="number"/>
+</label>
+<label><span data-i18n="royal">Royal</span><input name="attr_GP" type="number"/>
+</label>
+<label><span data-i18n="emperor">Emperor</span><input name="attr_PP" type="number"/>
+</label>
+</div>
+</section>
+<section class="sheet-panel sheet-equipment-panel">
+<div class="sheet-equipment-layout">
+<div class="sheet-equipment-left">
+<div class="sheet-equipment-block sheet-unencumbering-block">
+<h2 data-i18n="minor-equipment">Drobny ekwipunek</h2>
+<textarea class="sheet-unencumbering-text" data-i18n-placeholder="placeholder-minor-equipment" name="attr_unencumberingItems" placeholder="Ubrania, naszyjniki, pierścienie i inne drobiazgi; wpisuj jednym ciągiem, oddzielając przecinkami."></textarea>
+<p class="sheet-equipment-note" data-i18n="minor-equipment-note">Nie obciąża, chyba że noszone w dużych ilościach według osądu MG.</p>
+</div>
+<div class="sheet-equipment-block sheet-equipped-block">
+<h2 data-i18n="ready-equipment">Ekwipunek podręczny</h2>
+<div class="sheet-equipped-list">
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-01">
+<input name="attr_equippedItem01" title="Equipped item 1" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-120">Bazowy Ruch: 120'(40')</span>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-02">
+<input name="attr_equippedItem02" title="Equipped item 2" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-03">
+<input name="attr_equippedItem03" title="Equipped item 3" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-04">
+<input name="attr_equippedItem04" title="Equipped item 4" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-90">Bazowy Ruch: 90'(30')</span>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-05">
+<input name="attr_equippedItem05" title="Equipped item 5" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-06">
+<input name="attr_equippedItem06" title="Equipped item 6" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-60">Bazowy Ruch: 60'(20')</span>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-07">
+<input name="attr_equippedItem07" title="Equipped item 7" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-08">
+<input name="attr_equippedItem08" title="Equipped item 8" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-30">Bazowy Ruch: 30'(10')</span>
+</div>
+<div class="sheet-item-slot sheet-equipped-slot sheet-equipped-slot-09">
+<input name="attr_equippedItem09" title="Equipped item 9" type="text"/>
+</div>
+</div>
+<p class="sheet-equipment-note" data-i18n="ready-equipment-note">Rzeczy trzymane, noszone, gotowe do użycia: zbroja, tarcza, broń, pas, narzędzia pod ręką.</p>
+</div>
+</div>
+<div class="sheet-equipment-block sheet-packed-block">
+<h2 data-i18n="packed-equipment">Ekwipunek spakowany</h2>
+<div class="sheet-packed-list">
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-01">
+<input name="attr_packedItem01" title="Packed item 1" type="text"/>
+<span class="sheet-item-note" data-i18n="str-18-plus">STR 18+</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-02">
+<input name="attr_packedItem02" title="Packed item 2" type="text"/>
+<span class="sheet-item-note" data-i18n="str-16-plus">STR 16+</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-03">
+<input name="attr_packedItem03" title="Packed item 3" type="text"/>
+<span class="sheet-item-note" data-i18n="str-13-plus">STR 13+</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-04">
+<input name="attr_packedItem04" title="Packed item 4" type="text"/>
+<span class="sheet-item-note" data-i18n="str-9-plus">STR 9+</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-05">
+<input name="attr_packedItem05" title="Packed item 5" type="text"/>
+<span class="sheet-item-note" data-i18n="str-6-plus">STR 6+</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-06">
+<input name="attr_packedItem06" title="Packed item 6" type="text"/>
+<span class="sheet-item-note" data-i18n="str-4-plus">STR 4+</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-07">
+<input name="attr_packedItem07" title="Packed item 7" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-08">
+<input name="attr_packedItem08" title="Packed item 8" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-120">Bazowy Ruch: 120'(40')</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-09">
+<input name="attr_packedItem09" title="Packed item 9" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-10">
+<input name="attr_packedItem10" title="Packed item 10" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-11">
+<input name="attr_packedItem11" title="Packed item 11" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-12">
+<input name="attr_packedItem12" title="Packed item 12" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-13">
+<input name="attr_packedItem13" title="Packed item 13" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-14">
+<input name="attr_packedItem14" title="Packed item 14" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-90">Bazowy Ruch: 90'(30')</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-15">
+<input name="attr_packedItem15" title="Packed item 15" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-16">
+<input name="attr_packedItem16" title="Packed item 16" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-60">Bazowy Ruch: 60'(20')</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-17">
+<input name="attr_packedItem17" title="Packed item 17" type="text"/>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-18">
+<input name="attr_packedItem18" title="Packed item 18" type="text"/>
+<span class="sheet-item-note" data-i18n="base-movement-30">Bazowy Ruch: 30'(10')</span>
+</div>
+<div class="sheet-item-slot sheet-packed-slot sheet-packed-slot-19">
+<input name="attr_packedItem19" title="Packed item 19" type="text"/>
+</div>
+</div>
+<p class="sheet-equipment-note" data-i18n="packed-equipment-note">Pozostały sprzęt w workach i plecakach. W walce dobycie spakowanego przedmiotu może zająć rundę.</p>
+</div>
+</div>
+</section>
+</div>
+<div class="sheet-tab-panel sheet-tab-magic">
+<section class="sheet-panel sheet-magic-panel">
+<h2 data-i18n="spells-save">Czary</h2>
+<div class="sheet-spell-limits-title-row">
+<h3 class="sheet-subtitle" data-i18n="spell-limits">Limity czarów</h3>
+<button aria-label="Sen: odznacz wszystkie wymedytowane czary" class="sheet-sleep-button" data-i18n="sleep" data-i18n-aria-label="sleep" data-i18n-title="sleep" name="act_spell_sleep" title="Sen: odznacz wszystkie wymedytowane czary" type="action">Sen</button>
+</div>
+<div class="sheet-spell-slots sheet-spell-slots-v17">
+<label><span data-i18n="level-1">Poziom 1</span><span data-i18n="slots">Komórki</span>
+<input name="attr_spellsLevel1Total" type="number"/>
+<span data-i18n="available">Dostępne</span>
+<input class="sheet-slot-overdrawn" name="attr_spellsLevel1Overdrawn" type="hidden" value="0"/>
+<input class="sheet-spell-available" name="attr_spellsLevel1Available" readonly="" type="number"/>
+</label>
+<label><span data-i18n="level-2">Poziom 2</span><span data-i18n="slots">Komórki</span>
+<input name="attr_spellsLevel2Total" type="number"/>
+<span data-i18n="available">Dostępne</span>
+<input class="sheet-slot-overdrawn" name="attr_spellsLevel2Overdrawn" type="hidden" value="0"/>
+<input class="sheet-spell-available" name="attr_spellsLevel2Available" readonly="" type="number"/>
+</label>
+<label><span data-i18n="level-3">Poziom 3</span><span data-i18n="slots">Komórki</span>
+<input name="attr_spellsLevel3Total" type="number"/>
+<span data-i18n="available">Dostępne</span>
+<input class="sheet-slot-overdrawn" name="attr_spellsLevel3Overdrawn" type="hidden" value="0"/>
+<input class="sheet-spell-available" name="attr_spellsLevel3Available" readonly="" type="number"/>
+</label>
+<label><span data-i18n="level-4">Poziom 4</span><span data-i18n="slots">Komórki</span>
+<input name="attr_spellsLevel4Total" type="number"/>
+<span data-i18n="available">Dostępne</span>
+<input class="sheet-slot-overdrawn" name="attr_spellsLevel4Overdrawn" type="hidden" value="0"/>
+<input class="sheet-spell-available" name="attr_spellsLevel4Available" readonly="" type="number"/>
+</label>
+<label><span data-i18n="level-5">Poziom 5</span><span data-i18n="slots">Komórki</span>
+<input name="attr_spellsLevel5Total" type="number"/>
+<span data-i18n="available">Dostępne</span>
+<input class="sheet-slot-overdrawn" name="attr_spellsLevel5Overdrawn" type="hidden" value="0"/>
+<input class="sheet-spell-available" name="attr_spellsLevel5Available" readonly="" type="number"/>
+</label>
+<label><span data-i18n="level-6">Poziom 6</span><span data-i18n="slots">Komórki</span>
+<input name="attr_spellsLevel6Total" type="number"/>
+<span data-i18n="available">Dostępne</span>
+<input class="sheet-slot-overdrawn" name="attr_spellsLevel6Overdrawn" type="hidden" value="0"/>
+<input class="sheet-spell-available" name="attr_spellsLevel6Available" readonly="" type="number"/>
+</label>
+</div>
+<h3 class="sheet-subtitle" data-i18n="spell-list">Lista czarów</h3>
+<div class="sheet-spell-list-header">
+<span></span>
+<span data-i18n="spell-name">Nazwa czaru</span>
+<span data-i18n="level">Poziom</span>
+<span data-i18n="range">Zasięg</span>
+<span data-i18n="time">Czas</span>
+</div>
+<fieldset class="repeating_spells">
+<div class="sheet-spell-row-card">
+<div class="sheet-spell-row-top">
+<button aria-label="Pokaż czar" class="sheet-book-button" data-i18n-aria-label="spell-name" data-i18n-title="spell-name" name="roll_spellShow" title="Pokaż czar" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: @{spellName}}} {{subtitle=Czar poziomu @{spellLevel}}} {{range=@{spellRange}}} {{duration=@{spellDuration}}} {{effect=@{spellEffect}}} {{formula=@{spellRollFormula}}} {{description=@{spellDescription}}}"></button>
+<input data-i18n-placeholder="placeholder-spell-name" name="attr_spellName" placeholder="Nazwa czaru" type="text"/>
+<input data-i18n-placeholder="1" name="attr_spellLevel" placeholder="1" type="number"/>
+<input data-i18n-placeholder="range" name="attr_spellRange" placeholder="Zasięg" type="text"/>
+<input data-i18n-placeholder="time" name="attr_spellDuration" placeholder="Czas" type="text"/>
+</div>
+<div class="sheet-spell-row-description">
+<input aria-label="Opis czaru" data-i18n-aria-label="description" data-i18n-placeholder="placeholder-spell-description" data-i18n-title="description" name="attr_spellDescription" placeholder="Opis czaru" title="Opis czaru" type="text"/>
+</div>
+<div class="sheet-spell-row-effect">
+<button aria-label="Rzuć czar" class="sheet-spell-cast-button" data-i18n-aria-label="roll" data-i18n-title="roll" name="roll_spellEffect" title="Rzuć czar" type="roll" value="&amp;{template:eveskyr} {{name=@{character_name}: @{spellName}}} {{subtitle=Efekt czaru}} {{effect=@{spellEffect}}} {{roll=[[@{spellRollFormula} + ?{Modyfikator rzutu|0}]]}}"></button>
+<label class="sheet-spell-field-with-help">
+<input aria-label="Opis efektu czaru" data-i18n-aria-label="effect" data-i18n-placeholder="placeholder-spell-effect" data-i18n-title="effect" name="attr_spellEffect" placeholder="Opis efektu" title="Opis efektu czaru" type="text"/>
+<span data-i18n="placeholder-spell-roll-type">np. leczenie, obrażenia, odległość skoku...</span>
+</label>
+<label class="sheet-spell-field-with-help">
+<input aria-label="Formuła rzutu czaru" data-i18n-aria-label="formula" data-i18n-placeholder="placeholder-spell-formula" data-i18n-title="formula" name="attr_spellRollFormula" placeholder="Formuła rzutu" title="Formuła rzutu czaru" type="text"/>
+<span data-i18n="placeholder-spell-formula">np. 1d6+1, 2d8...</span>
+</label>
+<div class="sheet-spell-meditated-box">
+<span data-i18n="memorized">Wymedytowane</span>
+<input data-i18n-title="memorized" name="attr_spellMeditated1" title="Wymedytowane 1" type="checkbox" value="1"/>
+<input data-i18n-title="memorized" name="attr_spellMeditated2" title="Wymedytowane 2" type="checkbox" value="1"/>
+<input data-i18n-title="memorized" name="attr_spellMeditated3" title="Wymedytowane 3" type="checkbox" value="1"/>
+<input data-i18n-title="memorized" name="attr_spellMeditated4" title="Wymedytowane 4" type="checkbox" value="1"/>
+</div>
+</div>
+</div>
+</fieldset>
+</section>
+</div>
+<div class="sheet-tab-panel sheet-tab-notes">
+<section class="sheet-panel">
+<h2 data-i18n="tab-notes">Notatki</h2>
+<div class="sheet-grid sheet-grid-2">
+<label><span data-i18n="character-notes">Notatki postaci</span><textarea class="sheet-large-textarea" data-i18n-placeholder="placeholder-character-notes" name="attr_characterNotes" placeholder="Historia, osobowość, cele, relacje, ważne decyzje..."></textarea>
+</label>
+<label><span data-i18n="general-notes">Notatki ogólne</span><textarea class="sheet-large-textarea" data-i18n-placeholder="placeholder-general-notes" name="attr_generalNotes" placeholder="Tropy, zadania, łupy, podejrzenia, rzeczy do sprawdzenia..."></textarea>
+</label>
+</div>
+</section>
+</div>
+</div>
+</div>
+<div class="sheet-npc-sheet">
+<section class="sheet-panel sheet-npc-stat-panel">
+<h2 class="sheet-npc-stat-title">
+<input aria-label="Imię lub nazwa NPC / Potwora" data-i18n-aria-label="npc-name" data-i18n-placeholder="placeholder-npc-name" data-i18n-title="npc-name" name="attr_npcName" placeholder="Name" title="Imię lub nazwa NPC / Potwora" type="text"/>
+</h2>
+<div class="sheet-npc-stat-grid">
+<div class="sheet-npc-stat-card">
+<label>
+<span data-i18n="ac">KP</span>
+<input aria-label="Klasa pancerza" data-i18n-aria-label="ac" data-i18n-title="ac" name="attr_npcAc" title="Klasa pancerza" type="number"/>
+</label>
+<label>
+<span data-i18n="npc-hd">KŻ</span>
+<input aria-label="Kości życia" data-i18n-aria-label="npc-hd" data-i18n-placeholder="placeholder-npc-hd" data-i18n-title="npc-hd" name="attr_npcHitDice" placeholder="np. 2+1" title="Kości życia" type="text"/>
+</label>
+<label>
+<span data-i18n="thac0">THAC0</span>
+<input aria-label="THAC0" name="attr_npcThac0" title="THAC0" type="number"/>
+</label>
+<label>
+<span data-i18n="npc-movement">Ruch</span>
+<input aria-label="Ruch" data-i18n-aria-label="npc-movement" data-i18n-placeholder="placeholder-npc-movement" data-i18n-title="npc-movement" name="attr_npcMovement" placeholder="np. 90'(30')" title="Ruch" type="text"/>
+</label>
+<label>
+<span data-i18n="npc-saves">RO</span>
+<input aria-label="Rzuty obronne" data-i18n-aria-label="npc-saves" data-i18n-title="npc-saves" name="attr_npcSaves" title="Rzuty obronne" type="text"/>
+</label>
+<label>
+<span data-i18n="npc-ml">ML</span>
+<div class="sheet-npc-inline-roll-row">
+<input aria-label="Morale" data-i18n-aria-label="npc-morale" data-i18n-title="npc-morale" max="12" min="0" name="attr_npcMorale" title="Morale" type="number"/>
+<button aria-label="Rzut morale" class="sheet-skill-roll-button sheet-npc-inline-roll-button" data-i18n-aria-label="npc-morale" data-i18n-title="npc-morale" name="roll_npcMorale" title="Rzut morale" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: Morale}} {{subtitle=NPC / Potwór}} {{roll=[[2d6]]}} {{target=[[@{npcMorale}]]}} {{check_under=1}}"></button>
+</div>
+</label>
+<label>
+<span data-i18n="alignment">Char</span>
+<select aria-label="Charakter" name="attr_npcAlignment" title="Charakter">
+<option data-i18n="lawful" value="Prawo">Prawo</option>
+<option data-i18n="neutral" value="Neutralny">Neutralny</option>
+<option data-i18n="chaotic" value="Chaos">Chaos</option>
+</select>
+</label>
+<label>
+<span data-i18n="xp">PD</span>
+<input aria-label="Punkty doświadczenia" data-i18n-aria-label="xp" data-i18n-title="xp" min="0" name="attr_npcXP" title="Punkty doświadczenia" type="number"/>
+</label>
+<label>
+<span data-i18n="npc-dungeon">Loch</span>
+<div class="sheet-npc-inline-roll-row">
+<input aria-label="Ilość w lochu" data-i18n-aria-label="npc-dungeon" data-i18n-placeholder="placeholder-npc-damage" data-i18n-title="npc-dungeon" name="attr_npcNumberLair" placeholder="np. 1d6" title="Ilość w lochu" type="text"/>
+<button aria-label="Rzut ilości w lochu" class="sheet-skill-roll-button sheet-npc-inline-roll-button" data-i18n-aria-label="lair" data-i18n-title="lair" name="roll_npcNumberLair" title="Rzut ilości w lochu" type="roll" value="/w gm &amp;{template:eveskyr} {{name=@{npcName}: Ilość w lochu}} {{subtitle=NPC / Potwór}} {{roll=[[@{npcNumberLair}]]}}"></button>
+</div>
+</label>
+<label>
+<span data-i18n="npc-wilderness">Dzicz</span>
+<div class="sheet-npc-inline-roll-row">
+<input aria-label="Ilość w dziczy" data-i18n-aria-label="npc-wilderness" data-i18n-placeholder="placeholder-npc-damage" data-i18n-title="npc-wilderness" name="attr_npcNumberWilderness" placeholder="np. 2d6" title="Ilość w dziczy" type="text"/>
+<button aria-label="Rzut ilości w dziczy" class="sheet-skill-roll-button sheet-npc-inline-roll-button" data-i18n-aria-label="wilderness" data-i18n-title="wilderness" name="roll_npcNumberWilderness" title="Rzut ilości w dziczy" type="roll" value="/w gm &amp;{template:eveskyr} {{name=@{npcName}: Ilość w dziczy}} {{subtitle=NPC / Potwór}} {{roll=[[@{npcNumberWilderness}]]}}"></button>
+</div>
+</label>
+<label class="sheet-npc-checkbox-row">
+<span data-i18n="npc-spellcaster">Czarodziej</span>
+<input aria-label="Czarodziej" data-i18n-aria-label="npc-spellcaster" data-i18n-title="npc-spellcaster" name="attr_npcSpellcaster" title="Czarodziej" type="checkbox" value="1"/>
+</label>
+<label class="sheet-npc-description-row">
+<span data-i18n="description">Opis</span>
+<textarea aria-label="Opis stworzenia" data-i18n-aria-label="npc-description" data-i18n-placeholder="placeholder-npc-description" data-i18n-title="npc-description" name="attr_npcDescription" placeholder="Opis stworzenia" title="Opis stworzenia"></textarea>
+</label>
+</div>
+<div class="sheet-npc-attacks-card">
+<div class="sheet-npc-attack-block">
+<div class="sheet-npc-attack-title-row">
+<span data-i18n="attack-1">Atak1</span>
+<button aria-label="Rzut ataku 1" class="sheet-skill-roll-button sheet-npc-attack-roll-button" data-i18n-aria-label="attack-1" data-i18n-title="attack-1" name="roll_npcAttack1" title="Rzut ataku 1" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: Atak 1}} {{subtitle=@{npcAttack1Type}}} {{type=@{npcAttack1Type}}} {{attack=[[1d20 + @{npcThac0}]]}} {{damage=[[@{npcAttack1Damage}]]}} {{count=@{npcAttack1Count}}} {{description=@{npcAttack1Conditions}}}"></button>
+</div>
+<label>
+<span data-i18n="quantity-short">#</span>
+<input aria-label="Ilość ataków 1" data-i18n-aria-label="quantity" data-i18n-title="quantity" max="99" min="0" name="attr_npcAttack1Count" title="Ilość ataków 1" type="number"/>
+</label>
+<label>
+<span data-i18n="type">Typ</span>
+<input aria-label="Typ ataku 1" data-i18n-aria-label="attack-type" data-i18n-placeholder="placeholder-npc-attack-type" data-i18n-title="attack-type" name="attr_npcAttack1Type" placeholder="np. pazury" title="Typ ataku 1" type="text"/>
+</label>
+<label>
+<span data-i18n="dmg-short">Obr.</span>
+<input aria-label="Formuła obrażeń ataku 1" data-i18n-aria-label="damage" data-i18n-placeholder="placeholder-npc-damage" data-i18n-title="damage" name="attr_npcAttack1Damage" placeholder="np. 1d6" title="Formuła obrażeń ataku 1" type="text"/>
+</label>
+<label>
+<span data-i18n="conditions">Stany</span>
+<input aria-label="Dodatkowe stany ataku 1" data-i18n-aria-label="conditions" data-i18n-placeholder="placeholder-npc-conditions" data-i18n-title="conditions" name="attr_npcAttack1Conditions" placeholder="np. trucizna, paraliż" title="Dodatkowe stany ataku 1" type="text"/>
+</label>
+</div>
+<div class="sheet-npc-attack-block">
+<div class="sheet-npc-attack-title-row">
+<span data-i18n="attack-2">Atak2</span>
+<button aria-label="Rzut ataku 2" class="sheet-skill-roll-button sheet-npc-attack-roll-button" data-i18n-aria-label="attack-2" data-i18n-title="attack-2" name="roll_npcAttack2" title="Rzut ataku 2" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: Atak 2}} {{subtitle=@{npcAttack2Type}}} {{type=@{npcAttack2Type}}} {{attack=[[1d20 + @{npcThac0}]]}} {{damage=[[@{npcAttack2Damage}]]}} {{count=@{npcAttack2Count}}} {{description=@{npcAttack2Conditions}}}"></button>
+</div>
+<label>
+<span data-i18n="quantity-short">#</span>
+<input aria-label="Ilość ataków 2" data-i18n-aria-label="quantity" data-i18n-title="quantity" max="99" min="0" name="attr_npcAttack2Count" title="Ilość ataków 2" type="number"/>
+</label>
+<label>
+<span data-i18n="type">Typ</span>
+<input aria-label="Typ ataku 2" data-i18n-aria-label="attack-type" data-i18n-placeholder="placeholder-npc-attack-type" data-i18n-title="attack-type" name="attr_npcAttack2Type" placeholder="np. pazury" title="Typ ataku 2" type="text"/>
+</label>
+<label>
+<span data-i18n="dmg-short">Obr.</span>
+<input aria-label="Formuła obrażeń ataku 2" data-i18n-aria-label="damage" data-i18n-placeholder="placeholder-npc-damage" data-i18n-title="damage" name="attr_npcAttack2Damage" placeholder="np. 1d6" title="Formuła obrażeń ataku 2" type="text"/>
+</label>
+<label>
+<span data-i18n="conditions">Stany</span>
+<input aria-label="Dodatkowe stany ataku 2" data-i18n-aria-label="conditions" data-i18n-placeholder="placeholder-npc-conditions" data-i18n-title="conditions" name="attr_npcAttack2Conditions" placeholder="np. trucizna, paraliż" title="Dodatkowe stany ataku 2" type="text"/>
+</label>
+</div>
+<div class="sheet-npc-attack-block">
+<div class="sheet-npc-attack-title-row">
+<span data-i18n="attack-3">Atak3</span>
+<button aria-label="Rzut ataku 3" class="sheet-skill-roll-button sheet-npc-attack-roll-button" data-i18n-aria-label="attack-3" data-i18n-title="attack-3" name="roll_npcAttack3" title="Rzut ataku 3" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: Atak 3}} {{subtitle=@{npcAttack3Type}}} {{type=@{npcAttack3Type}}} {{attack=[[1d20 + @{npcThac0}]]}} {{damage=[[@{npcAttack3Damage}]]}} {{count=@{npcAttack3Count}}} {{description=@{npcAttack3Conditions}}}"></button>
+</div>
+<label>
+<span data-i18n="quantity-short">#</span>
+<input aria-label="Ilość ataków 3" data-i18n-aria-label="quantity" data-i18n-title="quantity" max="99" min="0" name="attr_npcAttack3Count" title="Ilość ataków 3" type="number"/>
+</label>
+<label>
+<span data-i18n="type">Typ</span>
+<input aria-label="Typ ataku 3" data-i18n-aria-label="attack-type" data-i18n-placeholder="placeholder-npc-attack-type" data-i18n-title="attack-type" name="attr_npcAttack3Type" placeholder="np. pazury" title="Typ ataku 3" type="text"/>
+</label>
+<label>
+<span data-i18n="dmg-short">Obr.</span>
+<input aria-label="Formuła obrażeń ataku 3" data-i18n-aria-label="damage" data-i18n-placeholder="placeholder-npc-damage" data-i18n-title="damage" name="attr_npcAttack3Damage" placeholder="np. 1d6" title="Formuła obrażeń ataku 3" type="text"/>
+</label>
+<label>
+<span data-i18n="conditions">Stany</span>
+<input aria-label="Dodatkowe stany ataku 3" data-i18n-aria-label="conditions" data-i18n-placeholder="placeholder-npc-conditions" data-i18n-title="conditions" name="attr_npcAttack3Conditions" placeholder="np. trucizna, paraliż" title="Dodatkowe stany ataku 3" type="text"/>
+</label>
+</div>
+<div class="sheet-npc-attack-block">
+<div class="sheet-npc-attack-title-row">
+<span data-i18n="attack-4">Atak4</span>
+<button aria-label="Rzut ataku 4" class="sheet-skill-roll-button sheet-npc-attack-roll-button" data-i18n-aria-label="attack-4" data-i18n-title="attack-4" name="roll_npcAttack4" title="Rzut ataku 4" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: Atak 4}} {{subtitle=@{npcAttack4Type}}} {{type=@{npcAttack4Type}}} {{attack=[[1d20 + @{npcThac0}]]}} {{damage=[[@{npcAttack4Damage}]]}} {{count=@{npcAttack4Count}}} {{description=@{npcAttack4Conditions}}}"></button>
+</div>
+<label>
+<span data-i18n="quantity-short">#</span>
+<input aria-label="Ilość ataków 4" data-i18n-aria-label="quantity" data-i18n-title="quantity" max="99" min="0" name="attr_npcAttack4Count" title="Ilość ataków 4" type="number"/>
+</label>
+<label>
+<span data-i18n="type">Typ</span>
+<input aria-label="Typ ataku 4" data-i18n-aria-label="attack-type" data-i18n-placeholder="placeholder-npc-attack-type" data-i18n-title="attack-type" name="attr_npcAttack4Type" placeholder="np. pazury" title="Typ ataku 4" type="text"/>
+</label>
+<label>
+<span data-i18n="dmg-short">Obr.</span>
+<input aria-label="Formuła obrażeń ataku 4" data-i18n-aria-label="damage" data-i18n-placeholder="placeholder-npc-damage" data-i18n-title="damage" name="attr_npcAttack4Damage" placeholder="np. 1d6" title="Formuła obrażeń ataku 4" type="text"/>
+</label>
+<label>
+<span data-i18n="conditions">Stany</span>
+<input aria-label="Dodatkowe stany ataku 4" data-i18n-aria-label="conditions" data-i18n-placeholder="placeholder-npc-conditions" data-i18n-title="conditions" name="attr_npcAttack4Conditions" placeholder="np. trucizna, paraliż" title="Dodatkowe stany ataku 4" type="text"/>
+</label>
+</div>
+</div>
+</div>
+</section>
+<section class="sheet-panel sheet-npc-abilities-panel">
+<h2 data-i18n="npc-abilities">Zdolności</h2>
+<div class="sheet-npc-abilities-header">
+<span>Nazwa zdolności</span>
+<span data-i18n="ability-description">Opis zdolności</span>
+</div>
+<fieldset class="repeating_npcabilities">
+<div class="sheet-npc-ability-row">
+<input aria-label="Nazwa zdolności" data-i18n-aria-label="ability-name" data-i18n-placeholder="name" data-i18n-title="ability-name" name="attr_npcAbilityName" placeholder="Nazwa" title="Nazwa zdolności" type="text"/>
+<textarea aria-label="Opis zdolności" data-i18n-aria-label="ability-description" data-i18n-placeholder="placeholder-npc-ability-description" data-i18n-title="ability-description" name="attr_npcAbilityDescription" placeholder="Opis zdolności" title="Opis zdolności"></textarea>
+</div>
+</fieldset>
+</section>
+<input class="sheet-npc-spellcaster-toggle" name="attr_npcSpellcaster" type="hidden" value="0"/>
+<section class="sheet-panel sheet-magic-panel sheet-npc-magic-panel">
+<h2 data-i18n="spell-list">Lista czarów</h2>
+<div class="sheet-spell-list-header">
+<span></span>
+<span data-i18n="spell-name">Nazwa czaru</span>
+<span data-i18n="level">Poziom</span>
+<span data-i18n="range">Zasięg</span>
+<span data-i18n="time">Czas</span>
+</div>
+<fieldset class="repeating_npcspells">
+<div class="sheet-spell-row-card">
+<div class="sheet-spell-row-top">
+<button aria-label="Pokaż czar" class="sheet-book-button" data-i18n-aria-label="spell-name" data-i18n-title="spell-name" name="roll_npcSpellShow" title="Pokaż czar" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: @{npcSpellName}}} {{subtitle=Czar poziomu @{npcSpellLevel}}} {{range=@{npcSpellRange}}} {{duration=@{npcSpellDuration}}} {{effect=@{npcSpellEffect}}} {{formula=@{npcSpellRollFormula}}} {{description=@{npcSpellDescription}}}"></button>
+<input data-i18n-placeholder="placeholder-spell-name" name="attr_npcSpellName" placeholder="Nazwa czaru" type="text"/>
+<input data-i18n-placeholder="1" name="attr_npcSpellLevel" placeholder="1" type="number"/>
+<input data-i18n-placeholder="range" name="attr_npcSpellRange" placeholder="Zasięg" type="text"/>
+<input data-i18n-placeholder="time" name="attr_npcSpellDuration" placeholder="Czas" type="text"/>
+</div>
+<div class="sheet-spell-row-description">
+<input aria-label="Opis czaru" data-i18n-aria-label="description" data-i18n-placeholder="placeholder-spell-description" data-i18n-title="description" name="attr_npcSpellDescription" placeholder="Opis czaru" title="Opis czaru" type="text"/>
+</div>
+<div class="sheet-spell-row-effect">
+<button aria-label="Rzuć czar" class="sheet-spell-cast-button" data-i18n-aria-label="roll" data-i18n-title="roll" name="roll_npcSpellEffect" title="Rzuć czar" type="roll" value="&amp;{template:eveskyr} {{name=@{npcName}: @{npcSpellName}}} {{subtitle=Efekt czaru}} {{effect=@{npcSpellEffect}}} {{roll=[[@{npcSpellRollFormula} + ?{Modyfikator rzutu|0}]]}}"></button>
+<label class="sheet-spell-field-with-help">
+<input aria-label="Opis efektu czaru" data-i18n-aria-label="effect" data-i18n-placeholder="placeholder-spell-effect" data-i18n-title="effect" name="attr_npcSpellEffect" placeholder="Opis efektu" title="Opis efektu czaru" type="text"/>
+<span data-i18n="placeholder-spell-roll-type">np. leczenie, obrażenia, odległość skoku...</span>
+</label>
+<label class="sheet-spell-field-with-help">
+<input aria-label="Formuła rzutu czaru" data-i18n-aria-label="formula" data-i18n-placeholder="placeholder-spell-formula" data-i18n-title="formula" name="attr_npcSpellRollFormula" placeholder="Formuła rzutu" title="Formuła rzutu czaru" type="text"/>
+<span data-i18n="placeholder-spell-formula">np. 1d6+1, 2d8...</span>
+</label>
+<div class="sheet-spell-meditated-box">
+<span data-i18n="uses">Użycia</span>
+<input data-i18n-title="uses" name="attr_npcSpellUse1" title="Użycie 1" type="checkbox" value="1"/>
+<input data-i18n-title="uses" name="attr_npcSpellUse2" title="Użycie 2" type="checkbox" value="1"/>
+<input data-i18n-title="uses" name="attr_npcSpellUse3" title="Użycie 3" type="checkbox" value="1"/>
+<input data-i18n-title="uses" name="attr_npcSpellUse4" title="Użycie 4" type="checkbox" value="1"/>
+</div>
+</div>
+</div>
+</fieldset>
+</section>
+</div>
+</div>
+<rolltemplate class="sheet-rolltemplate-eveskyr">
+<div style="width: 236px; max-width: 236px; margin: 0; padding: 4px; box-sizing: border-box; font-family: Trebuchet MS, Segoe UI, Arial, sans-serif; color: #241f1a; background-color: #4169e1; background-image: linear-gradient(145deg, rgba(65,105,225,0.24) 0%, rgba(47,82,189,0.50) 42%, rgba(36,59,143,0.78) 100%), url('https://raw.githubusercontent.com/tsarpl/ose-eveskyr-roll20-sheet/main/images/back_royalblue_satin.jpg'); background-repeat: no-repeat, repeat; background-position: center top, center top; background-size: 100% 100%, 260px 260px; border: 2px double #ffd700; box-shadow: inset 0 0 0 1px #b08d57, 0 2px 4px rgba(36,31,26,0.45);">
+<div style="margin: 0 0 4px 0; padding: 6px 7px; box-sizing: border-box; background-color: #1d2438; background-image: linear-gradient(90deg, rgba(8,10,18,0.56) 0%, rgba(8,10,18,0.30) 52%, rgba(8,10,18,0.12) 100%), url('https://raw.githubusercontent.com/tsarpl/ose-eveskyr-roll20-sheet/main/images/back_header_granit.jpg'); background-repeat: no-repeat, no-repeat; background-position: center center, center center; background-size: 100% 100%, cover; border: 1px solid #ffd700; box-shadow: inset 0 0 0 1px rgba(255,248,220,0.18), 0 1px 0 rgba(36,31,26,0.55);">
+<div style="margin: 0; color: #ffd700; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 15px; line-height: 1.12; font-weight: bold; letter-spacing: 0.35px; text-shadow: 0 1px 0 #2c2118, 0 0 7px rgba(255,215,0,0.36), 0 0 3px rgba(0,0,0,0.70);">{{name}}</div>
+      {{#subtitle}}<div style="margin: 3px 0 0 0; color: #fff4c4; font-size: 10px; line-height: 1.15; font-weight: bold; letter-spacing: 0.25px; text-shadow: 0 1px 0 #2c2118, 0 0 4px rgba(0,0,0,0.55);">{{subtitle}}</div>{{/subtitle}}
+    </div>
+<div style="padding: 5px; box-sizing: border-box; background-color: #f7f1e1; background-image: linear-gradient(180deg, rgba(255,255,255,0.64), rgba(255,255,255,0) 42%), url('https://raw.githubusercontent.com/tsarpl/ose-eveskyr-roll20-sheet/main/images/back_lightcream_paper.jpg'); background-repeat: no-repeat, repeat; background-position: center top, center top; background-size: 100% 100%, 260px 260px; border: 1px solid #b08d57; box-shadow: inset 0 0 0 1px #fff8dc;">
+      {{#type}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="type" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Typ:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{type}}</strong></div>{{/type}}
+      {{#count}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="quantity" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Ilość:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{count}}</strong></div>{{/count}}
+      {{#location}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="where" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Gdzie:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{location}}</strong></div>{{/location}}
+      {{#roll}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="roll" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Wynik:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #203580; font-size: 14px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{roll}}</strong></div>{{/roll}}
+      {{#attack}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="hit" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Trafienie:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #203580; font-size: 14px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{attack}}</strong></div>{{/attack}}
+      {{#damage}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="damage" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Obrażenia:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #203580; font-size: 14px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{damage}}</strong></div>{{/damage}}
+      {{#target}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="target" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Próg:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{target}}</strong></div>{{/target}}
+      {{#mod}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="modifier" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Modyfikator:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{mod}}</strong></div>{{/mod}}
+      {{#attackbonus}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="attack-bonus" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">+Atak:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{attackbonus}}</strong></div>{{/attackbonus}}
+      {{#damagebonus}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="damage-bonus" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">+Obrażenia:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{damagebonus}}</strong></div>{{/damagebonus}}
+      {{#range}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="range" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Zasięg:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{range}}</strong></div>{{/range}}
+      {{#duration}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="time" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Czas:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{duration}}</strong></div>{{/duration}}
+      {{#formula}}<div style="display: block; width: auto; box-sizing: border-box; margin: 0 0 4px 0; padding: 4px 5px; overflow: hidden; background: rgba(255,253,245,0.82); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="formula" style="display: inline-block; width: 72px; color: #203580; font-size: 9px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase; vertical-align: middle;">Formuła:</span><strong style="display: inline-block; float: right; max-width: 126px; overflow: hidden; color: #241f1a; font-size: 12px; line-height: 1.15; font-weight: bold; text-align: right; vertical-align: middle;">{{formula}}</strong></div>{{/formula}}
+
+      {{#check_under}}
+        {{#rollBetween() roll -999 target}}<div data-i18n="success" style="margin: 5px 0 4px 0; padding: 7px 7px; border: 2px solid #b08d57; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 16px; line-height: 1; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; color: #203580; background-color: #ffd700; text-shadow: 0 1px 0 rgba(255,248,220,0.75); box-shadow: inset 0 0 0 1px rgba(255,248,220,0.72), 0 1px 0 rgba(36,31,26,0.35);">SUKCES</div>{{/rollBetween() roll -999 target}}
+        {{#rollGreater() roll target}}<div data-i18n="failure" style="margin: 5px 0 4px 0; padding: 7px 7px; border: 2px solid #ffd700; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 16px; line-height: 1; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; color: #ffd700; background-color: #4169e1; text-shadow: 0 1px 0 #17265f, 0 0 4px rgba(255,215,0,0.35); box-shadow: inset 0 0 0 1px rgba(255,248,220,0.26), 0 1px 0 rgba(36,31,26,0.35);">PORAŻKA</div>{{/rollGreater() roll target}}
+      {{/check_under}}
+
+
+      {{#check_less}}
+        {{#rollLess() roll target}}<div data-i18n="success" style="margin: 5px 0 4px 0; padding: 7px 7px; border: 2px solid #b08d57; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 16px; line-height: 1; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; color: #203580; background-color: #ffd700; text-shadow: 0 1px 0 rgba(255,248,220,0.75); box-shadow: inset 0 0 0 1px rgba(255,248,220,0.72), 0 1px 0 rgba(36,31,26,0.35);">SUKCES</div>{{/rollLess() roll target}}
+        {{#rollBetween() roll target 999}}<div data-i18n="failure" style="margin: 5px 0 4px 0; padding: 7px 7px; border: 2px solid #ffd700; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 16px; line-height: 1; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; color: #ffd700; background-color: #4169e1; text-shadow: 0 1px 0 #17265f, 0 0 4px rgba(255,215,0,0.35); box-shadow: inset 0 0 0 1px rgba(255,248,220,0.26), 0 1px 0 rgba(36,31,26,0.35);">PORAŻKA</div>{{/rollBetween() roll target 999}}
+      {{/check_less}}
+
+      {{#check_over}}
+        {{#rollBetween() roll target 999}}<div data-i18n="success" style="margin: 5px 0 4px 0; padding: 7px 7px; border: 2px solid #b08d57; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 16px; line-height: 1; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; color: #203580; background-color: #ffd700; text-shadow: 0 1px 0 rgba(255,248,220,0.75); box-shadow: inset 0 0 0 1px rgba(255,248,220,0.72), 0 1px 0 rgba(36,31,26,0.35);">SUKCES</div>{{/rollBetween() roll target 999}}
+        {{#rollLess() roll target}}<div data-i18n="failure" style="margin: 5px 0 4px 0; padding: 7px 7px; border: 2px solid #ffd700; font-family: Georgia, Palatino Linotype, Times New Roman, serif; font-size: 16px; line-height: 1; font-weight: 900; letter-spacing: 1.2px; text-align: center; text-transform: uppercase; color: #ffd700; background-color: #4169e1; text-shadow: 0 1px 0 #17265f, 0 0 4px rgba(255,215,0,0.35); box-shadow: inset 0 0 0 1px rgba(255,248,220,0.26), 0 1px 0 rgba(36,31,26,0.35);">PORAŻKA</div>{{/rollLess() roll target}}
+      {{/check_over}}
+
+      {{#reaction}}
+        {{#rollLess() roll 3}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="hostile-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie wrogie:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub osoba są agresywne. Jeśli będą czuć przewagę, zaatakują. W innym wypadku będą starać się zastraszać swoim zachowaniem i eksponować uzbrojenie. Przyparte do muru będą się bronić. Żadne dogadanie się nie jest możliwe; istota lub postać chętnie zaszkodzi postaciom.</p></div>{{/rollLess() roll 3}}
+        {{#rollTotal() roll 3}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="reluctant-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie niechętne:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub istota podchodzą do postaci z wyraźną rezerwą, której dają dowód w swojej postawie. Wyraźnie nie mają ochoty na kontakt, a przyciśnięte mogą być agresywne. Będą działać na niekorzyść spotkanych postaci, nawet jeśli nie mają w tym wyraźnego interesu.</p></div>{{/rollTotal() roll 3}}
+        {{#rollBetween() roll 4 5}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="suspicious-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie nieufne:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub istota zachowują dystans do postaci i najchętniej zakończą interakcję tak szybko, jak to możliwe. W swoim nastawieniu nie stronią od krótkich, dosadnych komunikatów i nie idą postaciom na rękę.</p></div>{{/rollBetween() roll 4 5}}
+        {{#rollBetween() roll 6 8}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="neutral-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie neutralne:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub istota są neutralne. Ich zachowanie będzie zależeć od postawy postaci, ich zachowania i tego, czego będą się domagać. Jeśli poczują, że mogą zostać odpowiednio wynagrodzone za swoją pomoc, będą współpracować wedle oczekiwań postaci.</p></div>{{/rollBetween() roll 6 8}}
+        {{#rollBetween() roll 9 10}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="positive-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie pozytywne:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub istota są wyraźnie zainteresowane postaciami i tym, czego od nich oczekują. Jeśli mogą być pomocne bez wyraźnego kosztu ze swojej strony, chętnie będą współpracować.</p></div>{{/rollBetween() roll 9 10}}
+        {{#rollTotal() roll 11}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="helpful-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie życzliwe:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub istota podchodzą do postaci z sympatią i ufnością. Wyraźnie starają się być pomocne, nawet jeśli będą musiały poświęcić swój czas, wysiłek lub zasoby. Starają się również pozostawić jasne wrażenie, że postacie mogą na nie liczyć w przyszłości.</p></div>{{/rollTotal() roll 11}}
+        {{#rollGreater() roll 11}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="friendly-attitude" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Nastawienie przyjacielskie:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">Stworzenie lub istota szukają bliskości i kontaktu z postaciami. Starają się zaprosić je do swojego życia i dać wszystko, co mogą, nawet dużym własnym kosztem. Może okazać się, że uczucie jest znacznie mocniejsze, ociera się o miłość albo gotowość do poświęcenia wobec postaci.</p></div>{{/rollGreater() roll 11}}
+      {{/reaction}}
+
+      {{#effect}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="effect" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Efekt:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">{{effect}}</p></div>{{/effect}}
+      {{#conditions}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="conditions" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Stany:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">{{conditions}}</p></div>{{/conditions}}
+      {{#description}}<div style="margin: 5px 0 0 0; padding: 5px 6px; box-sizing: border-box; background: rgba(255,253,245,0.76); border: 1px solid rgba(176,141,87,0.72);"><span data-i18n="description" style="display: block; margin-bottom: 3px; color: #203580; font-size: 10px; line-height: 1.1; font-weight: 800; letter-spacing: 0.25px; text-transform: uppercase;">Opis:</span><p style="margin: 0; color: #241f1a; font-size: 11px; line-height: 1.22; white-space: pre-wrap;">{{description}}</p></div>{{/description}}
+    </div>
+</div>
+</rolltemplate>
+<script type="text/worker">
+  const eveskyrTabs = [
+    "identity",
+    "skills",
+    "exploration",
+    "combat",
+    "equipment",
+    "magic",
+    "notes"
+  ];
+
+  eveskyrTabs.forEach(tab => {
+    on(`clicked:tab_${tab}`, () => {
+      setAttrs({ sheetTab: tab });
+    });
+  });
+
+  const clanByRaceAttr = {
+    "Człowiek": "eveskyrClan_human",
+    "Elf": "eveskyrClan_elf",
+    "Gnom": "eveskyrClan_gnome",
+    "Krasnolud": "eveskyrClan_dwarf",
+    "Niziołek": "eveskyrClan_halfling"
+  };
+
+  const statusByCorporationAttr = {
+    "Bezpieczeństwo": "eveskyrStatus_security",
+    "Górnictwo": "eveskyrStatus_mining",
+    "Handel": "eveskyrStatus_trade",
+    "Inżynieria": "eveskyrStatus_engineering",
+    "Kultura": "eveskyrStatus_culture",
+    "Rzemiosło": "eveskyrStatus_craft",
+    "Wynalazczość": "eveskyrStatus_invention"
+  };
+
+  const syncClanFromRace = () => {
+    const attrs = ["race", ...Object.values(clanByRaceAttr)];
+    getAttrs(attrs, values => {
+      const race = values.race || "";
+      const clanAttr = clanByRaceAttr[race];
+      const clan = clanAttr ? (values[clanAttr] || "") : "";
+
+      const updates = { eveskyrClan: clan };
+      if (clan !== "Stronghollow") {
+        updates.eveskyrCorporation = "Brak";
+        updates.eveskyrStatus = "";
+      }
+      setAttrs(updates);
+    });
+  };
+
+  const syncStatusFromCorporation = () => {
+    const attrs = ["eveskyrCorporation", ...Object.values(statusByCorporationAttr)];
+    getAttrs(attrs, values => {
+      const corporation = values.eveskyrCorporation || "Brak";
+      const statusAttr = statusByCorporationAttr[corporation];
+      const status = statusAttr ? (values[statusAttr] || "") : "";
+      setAttrs({ eveskyrStatus: status });
+    });
+  };
+
+  on("change:race change:eveskyrClan_human change:eveskyrClan_elf change:eveskyrClan_gnome change:eveskyrClan_dwarf change:eveskyrClan_halfling", syncClanFromRace);
+  on("change:eveskyrCorporation", syncStatusFromCorporation);
+  on("change:eveskyrStatus_security change:eveskyrStatus_mining change:eveskyrStatus_trade change:eveskyrStatus_engineering change:eveskyrStatus_culture change:eveskyrStatus_craft change:eveskyrStatus_invention", syncStatusFromCorporation);
+
+
+  const spellLevels = [1, 2, 3, 4, 5, 6];
+  const spellMeditatedAttrs = ["spellMeditated1", "spellMeditated2", "spellMeditated3", "spellMeditated4"];
+
+  const normalizeSpellLevel = value => {
+    const level = parseInt(value, 10);
+    return spellLevels.includes(level) ? level : null;
+  };
+
+  const recalcSpellSlots = (eventInfo = null) => {
+    getSectionIDs("spells", ids => {
+      const attrs = [];
+
+      spellLevels.forEach(level => {
+        attrs.push(`spellsLevel${level}Total`);
+      });
+
+      ids.forEach(id => {
+        attrs.push(`repeating_spells_${id}_spellLevel`);
+        spellMeditatedAttrs.forEach(attr => {
+          attrs.push(`repeating_spells_${id}_${attr}`);
+        });
+      });
+
+      getAttrs(attrs, values => {
+        const totals = {};
+        const used = {};
+        const updates = {};
+        spellLevels.forEach(level => {
+          totals[level] = parseInt(values[`spellsLevel${level}Total`], 10) || 0;
+          used[level] = 0;
+        });
+
+        ids.forEach(id => {
+          const level = normalizeSpellLevel(values[`repeating_spells_${id}_spellLevel`]);
+          if (!level) return;
+
+          spellMeditatedAttrs.forEach(attr => {
+            if (values[`repeating_spells_${id}_${attr}`] === "1") {
+              used[level] += 1;
+            }
+          });
+        });
+
+        spellLevels.forEach(level => {
+          const available = totals[level] - used[level];
+          updates[`spellsLevel${level}Available`] = available;
+          updates[`spellsLevel${level}Overdrawn`] = available < 0 ? "1" : "0";
+        });
+        setAttrs(updates, { silent: true });
+      });
+    });
+  };
+
+  const spellSlotWatchers = [
+    "change:spellsLevel1Total",
+    "change:spellsLevel2Total",
+    "change:spellsLevel3Total",
+    "change:spellsLevel4Total",
+    "change:spellsLevel5Total",
+    "change:spellsLevel6Total",
+    "change:repeating_spells:spellLevel",
+    "change:repeating_spells:spellMeditated1",
+    "change:repeating_spells:spellMeditated2",
+    "change:repeating_spells:spellMeditated3",
+    "change:repeating_spells:spellMeditated4",
+    "remove:repeating_spells"
+  ].join(" ");
+
+  on(spellSlotWatchers, recalcSpellSlots);
+
+  on("clicked:spell_sleep", () => {
+    getSectionIDs("spells", ids => {
+      const updates = {};
+      ids.forEach(id => {
+        spellMeditatedAttrs.forEach(attr => {
+          updates[`repeating_spells_${id}_${attr}`] = "0";
+        });
+      });
+      setAttrs(updates, {}, recalcSpellSlots);
+    });
+  });
+
+
+  const armorBaseValues = {
+    "Patrz opis ->": "0",
+    "Zbroja skórzana": "2",
+    "Kolczuga": "4",
+    "Zbroja płytowa": "6",
+    "Tarcza": "1"
+  };
+
+  const toNumber = value => {
+    const parsed = parseInt(value, 10);
+    return Number.isFinite(parsed) ? parsed : 0;
+  };
+
+  const oseAbilityMod = score => {
+    const value = toNumber(score);
+    if (value <= 3) return -3;
+    if (value <= 5) return -2;
+    if (value <= 8) return -1;
+    if (value <= 12) return 0;
+    if (value <= 15) return 1;
+    if (value <= 17) return 2;
+    return 3;
+  };
+
+  const syncAbilityModifiers = () => {
+    getAttrs(["str", "int", "wis", "dex", "con", "cha"], values => {
+      setAttrs({
+        BonusSTR: oseAbilityMod(values.str),
+        intMod: oseAbilityMod(values.int),
+        wisMod: oseAbilityMod(values.wis),
+        BonusDEX: oseAbilityMod(values.dex),
+        HPConMod: oseAbilityMod(values.con),
+        chaMod: oseAbilityMod(values.cha)
+      }, { silent: true }, () => {
+        syncArmorValues();
+      });
+    });
+  };
+
+  on("change:str change:int change:wis change:dex change:con change:cha sheet:opened", syncAbilityModifiers);
+
+  const syncArmorValues = () => {
+    getSectionIDs("armor", ids => {
+      const attrs = ["BonusDEX"];
+      ids.forEach(id => {
+        attrs.push(`repeating_armor_${id}_armorName`);
+        attrs.push(`repeating_armor_${id}_armorWorn`);
+        attrs.push(`repeating_armor_${id}_armorMagic`);
+      });
+
+      getAttrs(attrs, values => {
+        const updates = {};
+        let armorBonus = 0;
+        const dexBonus = toNumber(values.BonusDEX);
+
+        ids.forEach(id => {
+          const name = values[`repeating_armor_${id}_armorName`] || "";
+          const worn = values[`repeating_armor_${id}_armorWorn`] === "1";
+          const baseValue = armorBaseValues[name] || "";
+          const magicValue = values[`repeating_armor_${id}_armorMagic`] || "0";
+
+          updates[`repeating_armor_${id}_armorValue`] = baseValue;
+
+          if (worn) {
+            armorBonus += toNumber(baseValue) + toNumber(magicValue);
+          }
+        });
+
+        updates.aacAc = 10 + dexBonus + armorBonus;
+        setAttrs(updates, { silent: true });
+      });
+    });
+  };
+
+  on("change:BonusDEX change:repeating_armor:armorName change:repeating_armor:armorWorn change:repeating_armor:armorMagic remove:repeating_armor sheet:opened", syncArmorValues);
+
+
+  const movementRates = {
+    1: { encounter: "40'", exploration: "120'", overland: "24 mile" },
+    2: { encounter: "30'", exploration: "90'", overland: "18 mil" },
+    3: { encounter: "20'", exploration: "60'", overland: "12 mil" },
+    4: { encounter: "10'", exploration: "30'", overland: "6 mil" }
+  };
+
+  const hasText = value => String(value || "").trim().length > 0;
+
+  const syncMovementRates = () => {
+    getSectionIDs("armor", ids => {
+      const attrs = [
+        "equippedItem04",
+        "equippedItem06",
+        "equippedItem08",
+        "packedItem14",
+        "packedItem16",
+        "packedItem18"
+      ];
+
+      ids.forEach(id => {
+        attrs.push(`repeating_armor_${id}_armorName`);
+        attrs.push(`repeating_armor_${id}_armorWorn`);
+      });
+
+      getAttrs(attrs, values => {
+        let tempo = 1;
+
+        ids.forEach(id => {
+          const name = values[`repeating_armor_${id}_armorName`] || "";
+          const worn = values[`repeating_armor_${id}_armorWorn`] === "1";
+
+          if (!worn) return;
+
+          if (name === "Zbroja skórzana") {
+            tempo = Math.max(tempo, 2);
+          }
+
+          if (name === "Kolczuga" || name === "Zbroja płytowa") {
+            tempo = Math.max(tempo, 3);
+          }
+        });
+
+        if (hasText(values.equippedItem04) || hasText(values.packedItem14)) {
+          tempo = Math.max(tempo, 2);
+        }
+
+        if (hasText(values.equippedItem06) || hasText(values.packedItem16)) {
+          tempo = Math.max(tempo, 3);
+        }
+
+        if (hasText(values.equippedItem08) || hasText(values.packedItem18)) {
+          tempo = Math.max(tempo, 4);
+        }
+
+        const rate = movementRates[tempo];
+        setAttrs({
+          movementEncounter: rate.encounter,
+          movementExploration: rate.exploration,
+          movementOverland: rate.overland
+        }, { silent: true });
+      });
+    });
+  };
+
+  on("change:repeating_armor:armorName change:repeating_armor:armorWorn remove:repeating_armor change:equippedItem04 change:equippedItem06 change:equippedItem08 change:packedItem14 change:packedItem16 change:packedItem18 sheet:opened", syncMovementRates);
+
+
+  const syncOpenDoorFromStrength = () => {
+    getAttrs(["BonusSTR"], values => {
+      const strMod = toNumber(values.BonusSTR);
+      setAttrs({ OpenDoor: Math.max(1, 2 + strMod) }, { silent: true });
+    });
+  };
+
+  const syncCharismaExploration = () => {
+    getAttrs(["cha"], values => {
+      const cha = parseInt(values.cha, 10) || 0;
+      let reaction = 0;
+      let loyalty = 7;
+      let retainers = 4;
+
+      if (cha <= 3) {
+        reaction = -2;
+        loyalty = 4;
+        retainers = 1;
+      } else if (cha <= 5) {
+        reaction = -1;
+        loyalty = 5;
+        retainers = 2;
+      } else if (cha <= 8) {
+        reaction = -1;
+        loyalty = 6;
+        retainers = 3;
+      } else if (cha <= 12) {
+        reaction = 0;
+        loyalty = 7;
+        retainers = 4;
+      } else if (cha <= 15) {
+        reaction = 1;
+        loyalty = 8;
+        retainers = 5;
+      } else if (cha <= 17) {
+        reaction = 1;
+        loyalty = 9;
+        retainers = 6;
+      } else {
+        reaction = 2;
+        loyalty = 10;
+        retainers = 7;
+      }
+
+      setAttrs({
+        explorationReactionMod: reaction,
+        retainersLoyalty: loyalty,
+        retainersMax: retainers
+      }, { silent: true });
+    });
+  };
+
+  on("change:BonusSTR sheet:opened", syncOpenDoorFromStrength);
+  on("change:cha sheet:opened", syncCharismaExploration);
+
+
+  const syncWeaponAttributeBonuses = () => {
+    getSectionIDs("weapons", ids => {
+      const attrs = ids.map(id => `repeating_weapons_${id}_attackType`);
+      getAttrs(attrs, values => {
+        const updates = {};
+        ids.forEach(id => {
+          const type = values[`repeating_weapons_${id}_attackType`] || "Inny";
+          if (type === "Wręcz") {
+            updates[`repeating_weapons_${id}_weaponAttributeBonus`] = "@{BonusSTR}";
+            updates[`repeating_weapons_${id}_weaponAttributeBonusDamage`] = "@{BonusSTR}";
+          } else if (type === "Dystansowy") {
+            updates[`repeating_weapons_${id}_weaponAttributeBonus`] = "@{BonusDEX}";
+            updates[`repeating_weapons_${id}_weaponAttributeBonusDamage`] = "0";
+          } else {
+            updates[`repeating_weapons_${id}_weaponAttributeBonus`] = "0";
+            updates[`repeating_weapons_${id}_weaponAttributeBonusDamage`] = "0";
+          }
+        });
+        setAttrs(updates, { silent: true });
+      });
+    });
+  };
+
+  on("change:repeating_weapons:attackType remove:repeating_weapons sheet:opened", syncWeaponAttributeBonuses);
+
+
+  const syncAbilityDirectionTemplateFlags = () => {
+    getSectionIDs("abilities", ids => {
+      const attrs = ids.map(id => `repeating_abilities_${id}_abilityDirection`);
+      getAttrs(attrs, values => {
+        const updates = {};
+        ids.forEach(id => {
+          const attr = `repeating_abilities_${id}_abilityDirection`;
+          const value = values[attr] || "";
+          if (value === "<" || value === "&lt;") {
+            updates[attr] = "{{check_under=1}}";
+          }
+          if (value === ">" || value === "&gt;") {
+            updates[attr] = "{{check_over=1}}";
+          }
+        });
+        if (Object.keys(updates).length) {
+          setAttrs(updates, { silent: true });
+        }
+      });
+    });
+  };
+
+  on("sheet:opened change:repeating_abilities:abilityDirection", syncAbilityDirectionTemplateFlags);
+
+
+</script>

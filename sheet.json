@@ -1,0 +1,8 @@
+{
+  "html": "eveskyr-ose.html",
+  "css": "eveskyr-ose.css",
+  "authors": "tsarpl",
+  "roll20userid": "4060",
+  "preview": "preview.png",
+  "instructions": "Custom Roll20 character sheet for Old School Essentials, built for the Eveskyr / Highforge campaign. Includes player character and NPC/Monster modes, English translation file, and custom visual assets."
+}
